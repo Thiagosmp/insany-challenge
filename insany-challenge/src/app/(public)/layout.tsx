@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { archivoSans } from "../fonts";
+import { archivoSans } from "../../styles/fonts";
+import { Providers } from "../providers"; 
 
 export const metadata: Metadata = {
   title: "SmartMoney",
-  description: "Seu banco!'",
+  description: "Seu banco!",
 };
 
 export default function RootLayout({
@@ -13,8 +14,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={`${archivoSans.variable}`}>
-        {children}
+      <body className={archivoSans.variable}>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
