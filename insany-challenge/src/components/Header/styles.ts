@@ -4,14 +4,15 @@ export const HeaderStyled = styled.header.withConfig({
   shouldForwardProp: (prop) => prop !== "isSticky",
 }) <{ isSticky: boolean }>`
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  background-color: ${({ isSticky, theme }) => (isSticky ? theme.colors.neutralDark700 : theme.colors.background)};
   height: 80px;
   padding: 0 7rem;
   position: ${({ isSticky }) => (isSticky ? "sticky" : "relative")};
   top: ${({ isSticky }) => (isSticky ? "0" : "auto")};
-  z-index: 1000;
+  background: ${({ isSticky, theme }) => (isSticky ? theme.colors.transparent : theme.colors.background)};
+  position: absolute;
 `;
 
 export const Logo = styled.div.withConfig({

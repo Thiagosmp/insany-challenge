@@ -19,6 +19,7 @@ export const theme = {
     neutralGray01: "#F2F5FC",
     neutralGray02: "#CBD6E2",
     white: "#FFF",
+    transparent: "transparent",
   },
   breakpoints: {
     mobile: "480px",

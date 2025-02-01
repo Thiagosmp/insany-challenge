@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { archivoSans } from "../../styles/fonts";
 import { Providers } from "../providers"; 
-import Header from "@/components/Header/Header";
 
 export const metadata: Metadata = {
   title: "SmartMoney",
@@ -17,7 +16,6 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={archivoSans.variable}>
         <Providers>
-          <Header />
           {children}
         </Providers>
       </body>

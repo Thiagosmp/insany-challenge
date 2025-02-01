@@ -1,4 +1,5 @@
 'use client'
+import Header from "@/components/Header/Header";
 
 import Footer from "@/components/Footer/Footer";
 import { ContentHeroWrapper, ContentMainWrapper } from "./styles";
@@ -8,8 +9,10 @@ import FormRegister from "@/components/FormRegister/FormRegister";
 export default function Home() {
   return (
     <>
+      <Header />
       <ContentMainWrapper>
         <ContentHeroWrapper>
+
           <span className="star">
             <Image src="/icons/icon-star.svg" alt="star" width={16} height={16} />
             Tecnologia disruptiva
