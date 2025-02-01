@@ -31,19 +31,19 @@ const Footer = () => {
           </LinksFooter>
           <SocialFooter>
             Acompanha nas redes
-            <Link href="https://www.twitter.com/insanydesign" target='blank'>
+            <Link href="/" target='blank'>
               <Image src="/icons/icon-twitch.svg" alt="logo-twitter" width={32} height={32} />
               Twitch
             </Link>
-            <Link href="https://www.linkedin.com/company/insany" target='blank'>
+            <Link href="/" target='blank'>
               <Image src="/icons/icon-linkedin.svg" alt="logo-linkedin" width={32} height={32} />
               Linkedin
             </Link>
-            <Link href="https://www.instagram.com/insanydesign" target='blank'>
+            <Link href="/" target='blank'>
               <Image src="/icons/icon-instagram.svg" alt="logo-instagram" width={32} height={32} />
               Instagram
             </Link>
-            <Link href="https://pt-br.facebook.com/ola.insanydesign" target='blank'>
+            <Link href="/" target='blank'>
               <Image src="/icons/icon-facebook.svg" alt="logo-facebook" width={32} height={32} />
               Facebook
             </Link>
@@ -51,7 +51,7 @@ const Footer = () => {
         </LinksAlign>
       </ContainerFooter>
       <Copy>
-        <Logo className='logoFooter'>
+        <Logo className='logoFooter' isSticky={false}>
           <Link href="/">
             <Image src="/icons/logo.svg" alt="logo" width={44} height={36.5} />
           </Link>

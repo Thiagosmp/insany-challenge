@@ -34,7 +34,7 @@ export default function Home() {
         </ContentHeroWrapper>
         <FormRegister />
       </ContentMainWrapper>
-      <Footer />
+      <Footer /> 
     </>
   );
 }
