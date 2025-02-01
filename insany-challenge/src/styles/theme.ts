@@ -6,6 +6,7 @@ export const theme = {
     auxGreen: "#35D9A8",
     auxYellow: "#FFD76F",
     background: "#FFF",
+    neutralDarkBorder: "#1D1B38",
     neutralDark800: "#070514",
     neutralDark700: "#0D0B1A",
     neutralDark600: "#131020",

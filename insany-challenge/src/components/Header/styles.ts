@@ -5,6 +5,7 @@ export const HeaderStyled = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: ${(props) => props.theme.colors.background};
+  /* background-color: ${(props) => props.theme.colors.neutralDark800}; */
   height: 80px;
   padding: 0 7rem;
 `;
