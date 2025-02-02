@@ -18,6 +18,7 @@ export const theme = {
     neutralDark50: "#757385",
     neutralGray01: "#F2F5FC",
     neutralGray02: "#CBD6E2",
+    neutralGrayOpacity: "#CBD6E266",
     white: "#FFF",
     transparent: "transparent",
   },

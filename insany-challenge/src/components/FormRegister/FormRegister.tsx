@@ -65,7 +65,6 @@ const FormRegister = () => {
           <p>Seus dados estão seguros</p>
         </div>
       </SectionForm>
-      
     </ContentFormWrapper>
   )
 }

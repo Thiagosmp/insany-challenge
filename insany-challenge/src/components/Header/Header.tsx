@@ -11,7 +11,7 @@ const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   const handleScroll = () => {
-    if (window.scrollY > 800) {
+    if (window.scrollY > 700) {
       setIsSticky(true); 
     } else {
       setIsSticky(false); 
@@ -25,7 +25,7 @@ const Header = () => {
 
   return (
     <motion.header
-      initial={{ position: 'relative' }}
+      // initial={{ position: 'relative' }}
       animate={{
         position: isSticky ? 'sticky' : 'relative', 
         top: isSticky ? 0 : 'auto', 
@@ -46,7 +46,7 @@ const Header = () => {
           <Link href="/">Carreira</Link>
           <Link href="/">Contato</Link>
           <Link href="/">Suporte</Link>
-          <Button>Cadastre-se</Button>
+          <Button >Cadastre-se</Button>
         </NavLinks>
       </HeaderStyled>
     </motion.header>

@@ -7,7 +7,7 @@ export const HeaderStyled = styled.header.withConfig({
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: ${({ isSticky }) => (isSticky ? "96px" : "80px")};
   padding: 0 7rem;
   position: ${({ isSticky }) => (isSticky ? "sticky" : "relative")};
   top: ${({ isSticky }) => (isSticky ? "0" : "auto")};

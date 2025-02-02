@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const ContentFormWrapper = styled.div`
-  padding: 134px 121px 0 43px;
   display: flex;
+  padding: 134px 112px 0 43px;
   justify-content: flex-end;
   position: relative;
   top: 35px;
@@ -15,6 +15,7 @@ export const SectionForm = styled.div`
   background-color: ${(props) => props.theme.colors.white};
   padding: 40px 43px 0 43px;
   border-radius: 6px;
+  box-shadow: 0px 30px 50px -10px rgba(76, 74, 94, 0.2);
 
   p {
     font-size: 0.9rem;
@@ -79,7 +80,7 @@ export const SectionForm = styled.div`
   .security {
     display: flex;
     align-items: center;
-    border-top: 2px solid ${(props) => props.theme.colors.neutralGray02};
+    border-top: 3px solid ${(props) => props.theme.colors.neutralGrayOpacity};
     padding: 27px 0;
     gap: 14px;
     margin-top: 27px;
@@ -89,5 +90,4 @@ export const SectionForm = styled.div`
       color: ${(props) => props.theme.colors.neutralDark500};
     }
   }
-
 `;
