@@ -162,3 +162,128 @@ export const AdvantagesExclusive = styled.div`
 }
 `;
 
+export const AdvantagesBanner = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  gap: 32px;
+  width: 100%;
+
+  .contentBanner {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+
+    .contentButton {
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      margin-top: 66px;
+
+      Button {
+        padding: 16px 69px;
+      }
+    }
+    
+    .alignImages {
+      display: flex;
+      justify-content: flex-end;
+      height: 100%;
+      gap: 29px;
+      margin-top: 70px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+
+        img {
+          border-radius: 8px;
+        }
+
+        .arrowUp {
+          display: flex;
+          rotate: 180deg;
+          align-items: flex-end;
+        }
+      }
+
+      .model {
+        align-items: flex-end;
+        position: relative;
+
+        div {
+          position: absolute;
+          bottom: 43%;
+          left: -12%;
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+          align-items: center;
+          background-color: ${(props) => props.theme.colors.white};
+          border-radius: 40px;
+          color: ${(props) => props.theme.colors.neutralDark200};
+          font-size: 0.875rem;
+          padding: 11px 18px 11px 12px;
+        }
+      }
+    }
+  }
+`;
+
+export const ContentContactButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 95px;
+  margin-bottom: 120px;
+
+  .division {
+    width: 4px;
+    height: 100%;
+    background-color: ${(props) => props.theme.colors.neutralGrayOpacity};
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h2 {
+      font-size: 1.5rem;
+      color: ${(props) => props.theme.colors.neutralDark800};
+      margin-top: 32px;
+      width: 320px;
+      text-align: center;
+      line-height: 125%;
+      font-weight: 600;
+    }
+
+    span {
+      font-size: 1.125rem;
+      color: ${(props) => props.theme.colors.neutralDark200};
+      line-height: 150%;
+      margin-top: 8px;
+    }
+
+    Button {
+      padding: 16px 56px;
+      margin-top: 32px;
+    }
+  }
+
+  .buttonWhite {
+    Button {
+      background-color: ${(props) => props.theme.colors.white};
+      color: ${(props) => props.theme.colors.primary};
+      border: 2px solid ${(props) => props.theme.colors.primary};
+
+      &:hover {
+        background-color: ${(props) => props.theme.colors.primary};
+        color: ${(props) => props.theme.colors.white};
+        transition:  .8s;
+      }
+    }
+  }
+`;

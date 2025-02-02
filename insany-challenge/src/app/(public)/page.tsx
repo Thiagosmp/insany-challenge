@@ -2,7 +2,7 @@
 import Header from "@/components/Header/Header";
 
 import Footer from "@/components/Footer/Footer";
-import { Advantages, AdvantagesExclusive, ContentHeroWrapper, ContentMainWrapper } from "./styles";
+import { Advantages, AdvantagesBanner, AdvantagesExclusive, ContentContactButton, ContentHeroWrapper, ContentMainWrapper } from "./styles";
 import Image from "next/image";
 import FormRegister from "@/components/FormRegister/FormRegister";
 import SectionWrapper from "@/components/SectionWrapper/SectionWrapper";
@@ -158,7 +158,45 @@ export default function Home() {
             </div>
           </div>
         </AdvantagesExclusive>
+        <AdvantagesBanner>
+          <div className="contentBanner">
+            <div className="contentButton">
+              <Button>Quero ser cliente</Button>
+            </div>
+            <div className="alignImages">
+              <div className="model">
+                <Image src="/img/modelExclusive.png" alt="model" width={282} height={402} />
+                <div>
+                  <Image src="/icons/icon-star.svg" alt="star" width={16} height={16}/>
+                  <span>Tecnologia disruptiva</span>
+                </div>  
+                <Image src="/icons/icon-arrow-long.svg" alt="model" width={149} height={55} className="arrowUp" />  
+              </div>
+              <div>
+                <Image src="/icons/icon-arrow-long.svg" alt="model" width={149} height={55} />  
+                <Image src="/img/graphProcess.png" alt="graph advantages exclusive" width={281} height={427} />
+              </div>
+            </div>
+          </div>
+        </AdvantagesBanner>
       </Advantages>
+      <SectionWrapper background={theme.colors.neutralGray01}>
+        <ContentContactButton>
+          <div>
+            <Image src="/icons/icon-dolar.svg" alt="icon dolar" width={64} height={64} />
+            <h2>Faça parte do mercado digital financeiro!</h2>
+            <span>Pellentesque urna commodo, elementum, est nullam.</span>
+            <Button>Quero ser cliente</Button>
+          </div>
+          <span className="division"/>
+          <div className="buttonWhite">
+            <Image src="/icons/icon-msg.svg" alt="icon message" width={64} height={64} />
+            <h2>Um time de suporte incrível para lhe atender</h2>
+            <span>Pellentesque urna commodo, elementum, est nullam.</span>
+            <Button>Fale conosco</Button>
+          </div>
+        </ContentContactButton>
+      </SectionWrapper>
       <Footer /> 
     </>
   );
