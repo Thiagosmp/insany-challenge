@@ -287,3 +287,62 @@ export const ContentContactButton = styled.div`
     }
   }
 `;
+
+export const QuestionsFrequently = styled.div`
+  display: flex;
+  height: 500px;
+  width: 100%;
+  display: flex;
+
+  .contentQuestions {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 16px;
+      width: 400px;
+
+      p {
+        font-size: 0.875rem;
+        color: ${(props) => props.theme.colors.neutralDark300};
+        font-weight: 600;
+      }
+
+      h2 {
+        font-size: 2.5rem;
+        color: ${(props) => props.theme.colors.neutralDark800};
+        font-weight: 600;
+        line-height: 125%;
+      }
+
+      span {
+        font-size: 1.125rem;
+        color: ${(props) => props.theme.colors.neutralDark200};
+        line-height: 150%;
+      }
+    }
+
+    .contactQuestions {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+
+      h3 {
+        font-size: 1.125rem;
+        color: ${(props) => props.theme.colors.neutralDark800};
+        line-height: 150%;
+        font-weight: 600;
+      }
+
+      span {
+        font-size: 0.875rem;
+        line-height: 150%;
+        color: ${(props) => props.theme.colors.neutralDark200};
+      }
+    }
+  }
+`;
