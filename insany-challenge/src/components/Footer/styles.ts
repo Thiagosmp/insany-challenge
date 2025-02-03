@@ -36,8 +36,24 @@ export const InputEmail = styled.div`
 
 export const EmailWrapper = styled.div`
   position: relative;
-  width: 100%;
-  max-width: 400px;
+
+  button {
+    top: 25%;
+    right: 15px;
+    position: absolute;
+    background-color: ${(props) => props.theme.colors.primary};
+    color: ${(props) => props.theme.colors.white};
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+
+    &:hover {
+      background-color: ${(props) => props.theme.colors.primaryDark};
+    }
+  }
 `;
 
 export const EmailInput = styled.input`
@@ -53,9 +69,6 @@ export const EmailInput = styled.input`
 
 export const SubmitButton = styled.button`
   position: absolute;
-  top: 50%;
-  right: 16px;
-  transform: translateY(-50%);
   background-color: ${(props) => props.theme.colors.primary};
   color: ${(props) => props.theme.colors.white};
   padding: 10px 16px;

@@ -3,14 +3,7 @@ import { CarouselContainer, ImageTrack, Image, ContentNoticesCarousel, DotsConta
 import { Author, FeaturedMedia, Post } from "@/types";
 import { motion } from "framer-motion";
 
-const images = [
-  "/img/businessCarousel.png",
-  "/img/businessCarousel.png",
-  "/img/businessCarousel.png",
-  "/img/businessCarousel.png",
-  "/img/businessCarousel.png",
-  "/img/businessCarousel.png",
-];
+
 
 type PostsCarousel = {
   posts: Post[];
@@ -23,6 +16,8 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
   const [autoPlay, setAutoPlay] = useState(true);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
+  const images = Array.from(featuresMedia.keys());
+
   useEffect(() => {
     if (!autoPlay) return;
 
@@ -31,7 +26,7 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
     }, 3000);
 
     return () => clearInterval(interval);
-  }, [autoPlay]);
+  }, [autoPlay, images.length]);
 
   const slideLeft = () => {
     setAutoPlay(false);
@@ -62,6 +57,10 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
   function removeHtmlTags(str = '') {
     return str.replace(/<[^>]*>/g, '');
   }
+
+  const totalDots = 4;
+  const startIndex = Math.max(0, index - Math.floor(totalDots / 2));
+  const visibleDots = images.slice(startIndex, startIndex + totalDots);
 
   return (
     <CarouselContainer>
@@ -127,11 +126,10 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
       </ImageTrack>
 
       <DotsContainer>
-        {images.map((_, i) => (
-          <Dot key={i} $active={i === index} onClick={() => goToImage(i)} />
+        {visibleDots.map((_, i) => (
+          <Dot key={i} $active={index % totalDots === i} onClick={() => goToImage(startIndex + i)} />
         ))}
       </DotsContainer>
-
     </CarouselContainer>
   );
 }

@@ -1,12 +1,30 @@
 'use client'
 
 import React from 'react'
-import { EmailInput, EmailWrapper, InputEmail, SubmitButton, LinksAlign, ContainerFooter, LinksFooter, FooterStyled, Copy,SocialFooter } from './styles'
+import { useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+import { EmailInput, EmailWrapper, LinksAlign, ContainerFooter, LinksFooter, FooterStyled, Copy, SocialFooter, InputEmail } from './styles'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Logo } from '../Header/styles'
+import Button from '../Button/Button'
+
+const emailSchema = z.object({
+  email: z.string().email('Por favor, insira um e-mail válido').nonempty('E-mail é obrigatório')
+})
+
+type EmailFormData = z.infer<typeof emailSchema>
 
 const Footer = () => {
+  const { register, handleSubmit, formState: { errors } } = useForm<EmailFormData>({
+    resolver: zodResolver(emailSchema),
+  })
+
+  const onSubmit = (data: EmailFormData) => {
+    alert(JSON.stringify(data).replace(/"/g, ''))
+  }
+
   return (
     <FooterStyled>
       <ContainerFooter>
@@ -16,10 +34,17 @@ const Footer = () => {
             <h3>Fique por dentro das novidades</h3>
             <p>Cadastre seu e-mail para receber conteúdo</p>
           </div>
-          <EmailWrapper>
-            <EmailInput type="email" placeholder="Insira seu melhor e-mail" />
-            <SubmitButton>Receber Novidades</SubmitButton>
-          </EmailWrapper>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <EmailWrapper>
+              <EmailInput
+                type="email"
+                placeholder="Insira seu melhor e-mail"
+                {...register('email')}
+              />
+              <Button>Receber Novidades</Button>
+            </EmailWrapper>
+            {errors.email && <p style={{color:'white'}}>{errors.email.message}</p>}
+          </form>
         </InputEmail>
 
         <LinksAlign>

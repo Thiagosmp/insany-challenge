@@ -63,6 +63,11 @@ export const SectionForm = styled.div`
       margin-top: 8px;
       padding: 21px 0;
     }
+
+    p {
+      font-size: 0.875rem;
+      color: ${(props) => props.theme.colors.error};
+    }
   }
 
   .privacy {

@@ -64,6 +64,11 @@ export const SectionContent = styled.section<{ $background?: string }>`
   .contentPriceCustomized {
     position: relative;
 
+    Image {
+      width: auto;
+      height: auto;
+    }
+
     .contentPrice {
         position: absolute;
         bottom: 90px;

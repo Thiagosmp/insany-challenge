@@ -21,6 +21,7 @@ export const theme = {
     neutralGrayOpacity: "#CBD6E266",
     white: "#FFF",
     transparent: "transparent",
+    error: "#FF4D4D",
   },
   breakpoints: {
     mobile: "480px",
