@@ -7,15 +7,36 @@ import Image from "next/image";
 import FormRegister from "@/components/FormRegister/FormRegister";
 import SectionWrapper from "@/components/SectionWrapper/SectionWrapper";
 import Button from "@/components/Button/Button";
-import { ContentFeatures, ContentNotices } from "@/components/SectionWrapper/styles";
+import { ContentFeatures, ContentNotices, Dot, DotsContainer } from "@/components/SectionWrapper/styles";
 import Features from "@/components/Features/Features";
 import { theme } from "@/styles/theme";
 import Carousel from "@/components/Carousel/Carousel";
 import QuestionFrequentExpand from "@/components/QuestionFrequentExpand/QuestionFrequentExpand";
 import { useContextFeatures } from "@/context/ContextFeatures";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+
+const images = [
+  "/img/modelPoster.png",
+  "/img/tes.png",
+  "/img/modelPoster.png",
+];
 
 export default function Home() {
   const { posts, authors, featuresMedia } = useContextFeatures();
+  const [currentIndex, setCurrentIndex] = useState(0); 
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000); 
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const goToImage = (index: number) => {
+    setCurrentIndex(index);
+  };
 
   return (
     <>
@@ -80,7 +101,52 @@ export default function Home() {
         </div>
 
         <div className="contentPriceCustomized">
-          <Image src="/img/poster.png" alt="poster" width={488} height={608} />
+          <div className="contentImage">
+            <div className="dots">
+              <DotsContainer>
+                {images.map((_, i) => (
+                  <Dot
+                    key={i}
+                    $active={i === currentIndex}
+                    onClick={() => goToImage(i)}
+                  />
+                ))}
+              </DotsContainer>
+            </div>
+
+            <div className="image">
+              {images.map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.9 }} 
+                  animate={{
+                    opacity: currentIndex === i ? 1 : 0, 
+                    scale: currentIndex === i ? 1 : 0.9, 
+                  }}
+                  transition={{
+                    duration: 0.6, 
+                    ease: "easeInOut",
+                  }}
+                  style={{
+                    position: "absolute", 
+                    display: currentIndex === i ? "block" : "none", 
+                  }}
+                >
+                  <motion.img
+                    src={src}
+                    alt={`Image ${i + 1}`}
+                    width={434}
+                    height={544}
+                    whileHover={{
+                      scale: 1.1, 
+                    }}
+                    transition={{ duration: 0.4 }} 
+                  />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
           <div className="contentPrice">
             <div className="price">
               <div>
@@ -173,7 +239,17 @@ export default function Home() {
             </div>
             <div className="alignImages">
               <div className="model">
-                <Image src="/img/modelExclusive.png" alt="model" width={282} height={402} />
+                <motion.img
+                  src="/img/modelExclusive.png"
+                  alt="model advantages exclusive"
+                  width={282}
+                  height={402}
+                  className="imgCarousel"
+                  transition={{ duration: 0.8, ease: "backOut" }}
+                  whileHover={{
+                    scale: 1.25, 
+                  }}
+                />
                 <div>
                   <Image src="/icons/icon-star.svg" alt="star" width={16} height={16}/>
                   <span>Tecnologia disruptiva</span>
@@ -182,7 +258,17 @@ export default function Home() {
               </div>
               <div>
                 <Image src="/icons/icon-arrow-long.svg" alt="model" width={149} height={55} />  
-                <Image src="/img/graphProcess.png" alt="graph advantages exclusive" width={281} height={427} />
+                <motion.img
+                  src="/img/graphProcess.png"
+                  alt="graph advantages exclusive"
+                  width={281}
+                  height={427}
+                  className="imgCarousel"
+                  transition={{ duration: 0.8, ease: "backOut" }}
+                  whileHover={{
+                    scale: 1.25,
+                  }}
+                />
               </div>
             </div>
           </div>

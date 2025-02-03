@@ -1,3 +1,4 @@
+import { DotProps } from "@/types";
 import styled from "styled-components";
 
 export const SectionContent = styled.section<{ $background?: string }>`
@@ -64,10 +65,31 @@ export const SectionContent = styled.section<{ $background?: string }>`
   .contentPriceCustomized {
     position: relative;
 
-    Image {
-      width: auto;
-      height: auto;
+    .contentImage {
+      width: 488px;
+      height: 608px;
+      background-image: url('/img/backgroundPoster.png');
+      padding: 0 54px 0 0;
+      background-color: rgba(29, 99, 255, 0.1);
+
+      .image {
+        display: flex;
+
+        Image {
+          width: auto;
+          height: auto;
+        }
+      }
+
+      .dots {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 10px;
+      }
     }
+
+    
 
     .contentPrice {
         position: absolute;
@@ -179,4 +201,21 @@ export const ContentNotices = styled.section`
       width: 400px;
     }
   }
+`;
+
+export const DotsContainer = styled.div`
+  display: flex;
+  height: 64px;
+  align-items: center;
+  gap: 5px;
+`;
+
+export const Dot = styled.div<DotProps>`
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: ${(props) => (props.$active ? props.theme.colors.primary : props.theme.colors.white)};
+  border: 1px solid ${(props) => (props.$active ? props.theme.colors.primary : props.theme.colors.white)};
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 `;

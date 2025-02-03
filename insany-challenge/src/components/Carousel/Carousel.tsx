@@ -3,8 +3,6 @@ import { CarouselContainer, ImageTrack, Image, ContentNoticesCarousel, DotsConta
 import { Author, FeaturedMedia, Post } from "@/types";
 import { motion } from "framer-motion";
 
-
-
 type PostsCarousel = {
   posts: Post[];
   authors: Map<string, Author>;
