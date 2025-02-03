@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { CarouselContainer, ImageTrack, Image, ContentNoticesCarousel, DotsContainer, Dot } from "./styles";
-import { Author, FeaturedMedia, Post } from "@/types";
+import { IAuthor, IFeaturedMedia, IPost } from "@/types";
 import { motion } from "framer-motion";
 
 type PostsCarousel = {
-  posts: Post[];
-  authors: Map<string, Author>;
-  featuresMedia: Map<string, FeaturedMedia>;
+  posts: IPost[];
+  authors: Map<string, IAuthor>;
+  featuresMedia: Map<string, IFeaturedMedia>;
 };
 
 const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {

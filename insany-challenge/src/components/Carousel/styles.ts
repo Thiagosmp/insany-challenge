@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { DotProps } from "@/types";
+import { IDotProps } from "@/types";
 
 export const CarouselContainer = styled.div`
   display: flex;
@@ -120,12 +120,12 @@ export const DotsContainer = styled.div`
   margin-top: 90px;
 `;
 
-export const Dot = styled.div<DotProps>`
+export const Dot = styled.div<IDotProps>`
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background-color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.colors.primary)};
   border: 1px solid ${(props) => props.theme.colors.primary};
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 1s ease;
 `;

@@ -1,8 +1,8 @@
 import React from 'react';
 import { SectionContent } from './styles';
-import { SectionProps } from '@/types';
+import { ISectionProps } from '@/types';
 
-const SectionWrapper: React.FC<SectionProps> = ({ children, background }) => {
+const SectionWrapper: React.FC<ISectionProps> = ({ children, background }) => {
   return <SectionContent $background={background}>{children}</SectionContent>;
 };
 

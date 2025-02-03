@@ -9,7 +9,8 @@ import Input from '../Input/Input';
 import Link from 'next/link';
 import Button from '../Button/Button';
 import Image from 'next/image';
-import { validateCNPJ } from '@/utils/ValidateCNPJ';
+import { validateCNPJ } from '@/utils/validateCNPJ';
+
 
 const schemaPessoa = z.object({
   name: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),

@@ -1,9 +1,9 @@
 import React from 'react'
 import { FeaturesContent } from './styles'
 import Image from 'next/image'
-import { FeaturesProps } from '@/types'
+import { IFeaturesProps } from '@/types'
 
-const Features = ({ children, icon, alt}: FeaturesProps) => {
+const Features = ({ children, icon, alt }: IFeaturesProps) => {
   return (
     <FeaturesContent>
       {icon && <Image src={icon} alt={alt || 'Feature Icon'} width={64} height={64} />}

@@ -1,25 +1,16 @@
-import { Author, FeaturedMedia, Post } from '@/types';
+import { IAuthor, IFeaturedMedia, IContextFeaturesType, IPost } from '@/types';
 import React, { createContext, useState, useEffect, ReactNode } from 'react';
 
-interface ContextFeaturesType {
-  posts: Post[];
-  authors: Map<string, Author>;
-  featuresMedia: Map<string, FeaturedMedia>;
-  fetchPosts: () => void;
-  fetchAuthorDetails: (authorUrl: string, postId: string) => void;
-  fetchFeaturesMedia: (featureUrl: string, featureId: string) => void;
-}
-
-const ContextFeatures = createContext<ContextFeaturesType | undefined>(undefined);
+const ContextFeatures = createContext<IContextFeaturesType | undefined>(undefined);
 
 interface ContextFeaturesProps {
   children: ReactNode;
 }
 
 export const ContextFeaturesProvider = ({ children }: ContextFeaturesProps) => {
-  const [posts, setPosts] = useState<Post[]>([]);
-  const [authors, setAuthors] = useState<Map<string, Author>>(new Map());
-  const [featuresMedia, setFeaturesMedia] = useState<Map<string, FeaturedMedia>>(new Map());
+  const [posts, setPosts] = useState<IPost[]>([]);
+  const [authors, setAuthors] = useState<Map<string, IAuthor>>(new Map());
+  const [featuresMedia, setFeaturesMedia] = useState<Map<string, IFeaturedMedia>>(new Map());
 
   const fetchPosts = async () => {
     const response = await fetch('https://devblog.insanydesign.com/wp-json/wp/v2/posts/');

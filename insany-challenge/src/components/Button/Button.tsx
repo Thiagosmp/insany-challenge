@@ -1,8 +1,8 @@
 import React from 'react'
 import { ButtonStyled } from './styles'
-import { ButtonProps } from '@/types'
+import { IButtonProps } from '@/types'
 
-const Button = ({ children }: ButtonProps ) => {
+const Button = ({ children }: IButtonProps ) => {
   return (
     <ButtonStyled>{children}</ButtonStyled>
   )

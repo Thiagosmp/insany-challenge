@@ -1,4 +1,4 @@
-export interface Post {
+export interface IPost {
   id: string;
   date?: string;
   slug?: string;
@@ -25,7 +25,7 @@ export interface Post {
   }
 }
 
-export interface FeaturedMedia {
+export interface IFeaturedMedia {
   id?: string;
   date?: string;
   type?: string;
@@ -38,7 +38,7 @@ export interface FeaturedMedia {
   source_url?: string;
 }
 
-export interface Author {
+export interface IAuthor {
   id?: string;
   name?: string;
   description?: string;
@@ -50,28 +50,37 @@ export interface Author {
   }
 }
 
-export interface DotProps {
+export interface IDotProps {
   $active: boolean;
 }
 
-export interface InputProps {
+export interface IInputProps {
   label?: string;
   type?: string;
   placeholder?: string;
 }
 
-export interface ButtonProps {
+export interface IButtonProps {
   children?: React.ReactNode
   onClick?: () => void
 }
 
-export interface FeaturesProps {
+export interface IFeaturesProps {
   children: React.ReactNode
   icon?: string
   alt?: string
 }
 
-export interface SectionProps {
+export interface ISectionProps {
   children: React.ReactNode;
   background?: string; 
+}
+
+export interface IContextFeaturesType {
+  posts: IPost[];
+  authors: Map<string, IAuthor>;
+  featuresMedia: Map<string, IFeaturedMedia>;
+  fetchPosts: () => void;
+  fetchAuthorDetails: (authorUrl: string, postId: string) => void;
+  fetchFeaturesMedia: (featureUrl: string, featureId: string) => void;
 }

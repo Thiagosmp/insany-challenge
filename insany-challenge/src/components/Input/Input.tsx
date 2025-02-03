@@ -1,8 +1,8 @@
 import React from 'react'
 import { InputWrapper, Label, StyledInput } from './styles'
-import { InputProps } from '@/types';
+import { IInputProps } from '@/types';
 
-const Input = ({ label, type = "text", placeholder, ...props }: InputProps) => {
+const Input = ({ label, type = "text", placeholder, ...props }: IInputProps) => {
   return (
     <InputWrapper>
       {label && <Label>{label}</Label>}
