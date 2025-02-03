@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { CarouselContainer, ImageTrack, Image, ContentNoticesCarousel, DotsContainer, Dot } from "./styles";
+import { Author, FeaturedMedia, Post } from "@/types";
 
 const images = [
   "/img/businessCarousel.png",
@@ -10,33 +11,50 @@ const images = [
   "/img/businessCarousel.png",
 ];
 
-export default function Carousel() {
+type PostsCarousel = {
+  posts: Post[];
+  authors: Map<string, Author>;
+  featuresMedia: Map<string, FeaturedMedia>;
+};
+
+const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
   const [index, setIndex] = useState(0);
-  const [autoPlay, setAutoPlay] = useState(true);
+  // const [autoPlay, setAutoPlay] = useState(true);
 
-  useEffect(() => {
-    if (!autoPlay) return;
+  // useEffect(() => {
+  //   if (!autoPlay) return;
 
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % images.length);
-    }, 3000);
+  //   const interval = setInterval(() => {
+  //     setIndex((prev) => (prev + 1) % images.length);
+  //   }, 3000);
 
-    return () => clearInterval(interval);
-  }, [autoPlay]);
+  //   return () => clearInterval(interval);
+  // }, [autoPlay]);
 
   const slideLeft = () => {
-    setAutoPlay(false);
+    // setAutoPlay(false);
     setIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const slideRight = () => {
-    setAutoPlay(false);
+    // setAutoPlay(false);
     setIndex((prev) => (prev + 1) % images.length);
   };
 
   const goToImage = ( i: number ) => {
-    setAutoPlay(false);
+    // setAutoPlay(false);
     setIndex(i);
+  };
+
+  const formatDate = (date: string | undefined) => {
+    if (!date) {
+      return 'Data não disponível';
+    }
+
+    return new Date(date)
+      .toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
+      .replace(' de ', ' ')
+      .replace(/^./, str => str.toUpperCase());
   };
 
   return (
@@ -54,23 +72,40 @@ export default function Carousel() {
         animate={{ x: -index * 300 }}
         transition={{ duration: 1.5, ease: "backIn" }}
       >
-        {images.map((src, i) => (
+        {posts?.map((post, i) => (
           <div key={i}>
-            <Image src={src} width={280} height={340} alt="model" className="imgCarousel" />
-            <ContentNoticesCarousel>
-              <div className="notice">
-                <span className="bold">Business</span>
-                <span>Outubro 2021</span>
-              </div>
-              <span className="descriptionNotice">Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor</span>
-              <div className="autorData">
-                <Image src="/img/avatar01.png" alt="icon perfil" width={48} height={48} />
-                <div>
-                  <span className="nameAutor">Savannah Nguyen</span>
-                  <span>Autor</span>
-                </div>
-              </div>
-            </ContentNoticesCarousel>
+            <div>{post.id}</div>
+            {/* <div>{post.content?.rendered}</div> */}
+            {featuresMedia.has(post.id) && (
+              <>
+                <Image src={featuresMedia.get(post.id)?.source_url} alt="Features Media" width={280} height={340} className="imgCarousel" />
+                <ContentNoticesCarousel>
+                  <div className="notice">
+                    <span className="bold">Business</span>
+                    <span>{formatDate(post.date)}</span>
+                  </div>
+                  <span className="descriptionNotice">Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor</span>
+
+                  {authors.has(post.id) && (
+                    <div className="autorData">
+                      <div className="avatar">
+                        <Image
+                          src={authors.get(post.id)?.avatar_urls?.[48]}
+                          alt="Author Avatar"
+                          width={48}
+                          height={48}
+                        />
+                      </div>
+                      
+                      <div>
+                        <span className="nameAutor">{authors.get(post.id)?.name}</span>
+                        <span>{authors.get(post.id)?.slug}</span>
+                      </div>
+                    </div>
+                  )}
+                </ContentNoticesCarousel>
+              </>
+            )}
           </div>
         ))}
       </ImageTrack>
@@ -84,3 +119,7 @@ export default function Carousel() {
     </CarouselContainer>
   );
 }
+
+export default Carousel;
+
+{/* <Image src={featuresMedia.get(post.id)?.source_url} alt="arrow left" width={200} height={200} /> */}

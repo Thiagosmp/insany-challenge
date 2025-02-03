@@ -3,62 +3,77 @@
 import React, { useEffect, useState } from 'react'
 import { HeaderBack } from './styles'
 
-// Definir a interface para os dados dos posts
 interface Post {
   id: string;
-  title: string;
-  content: string;
-  date: string;
+  author: string;
+  guid: {
+    rendered: string;
+  };
+  _links: {
+    author: [
+      {
+        href: string;
+      }
+    ]
+  }
+}
+
+interface Author {
+  name: string;
+  description: string;
 }
 
 const Page = () => {
   const [posts, setPosts] = useState<Post[]>([]);
   const [loading, setLoading] = useState(true);
+  const [authors, setAuthors] = useState<Map<string, Author>>(new Map()); // Para armazenar dados de autores
 
   const fetchPosts = async () => {
-    const query = `
-        query {
-          posts {
-            nodes {
-              id
-              title
-              content
-              date
-            }
-          }
-        }
-      `;
-
-    const response = await fetch('https://devblog.insanydesign.com/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ query }),
-    });
-
-    const { data } = await response.json();
-    setPosts(data.posts.nodes);
+    const response = await fetch("https://devblog.insanydesign.com/wp-json/wp/v2/posts/");
+    const data = await response.json();
+    setPosts(data);
     setLoading(false);
+  }
+
+  const fetchAuthorDetails = async (authorUrl: string, postId: string) => {
+    const response = await fetch(authorUrl);
+    const data = await response.json();
+
+    setAuthors(prev => new Map(prev).set(postId, data)); // Armazena os dados do autor no estado
   }
 
   useEffect(() => {
     fetchPosts();
   }, []);
 
+  useEffect(() => {
+    posts.forEach(post => {
+      const authorUrl = post._links.author[0].href;
+      if (authorUrl) {
+        fetchAuthorDetails(authorUrl, post.id);
+      }
+    });
+  }, [posts]);
+
   if (loading) return <p>Loading...</p>;
 
   return (
     <>
       <HeaderBack />
-      <div>
-        {posts?.map(post => (
-          <div key={post.id}>
-            <h2>{post.title}</h2>
-            <p>{post.content}</p>
-          </div>
-        ))}
-      </div>
+      {posts?.map((post) => (
+        <div key={post.id}>
+          <p>{post.id}</p>
+          <p>{post.guid.rendered}</p>
+          <p>{post._links.author[0].href}</p>
+          {authors.has(post.id) && (
+            <div>
+              <h4>Author Info:</h4>
+              <p>Name: {authors.get(post.id)?.name}</p>
+              <p>Description: {authors.get(post.id)?.description}</p>
+            </div>
+          )}
+        </div>
+      ))}
     </>
   );
 };

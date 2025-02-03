@@ -1,10 +1,6 @@
 import React from 'react'
 import { ButtonStyled } from './styles'
-
-interface ButtonProps {
-  children?: React.ReactNode
-  onClick?: () => void
-}
+import { ButtonProps } from '@/types'
 
 const Button = ({ children }: ButtonProps ) => {
   return (

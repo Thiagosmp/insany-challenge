@@ -1,11 +1,6 @@
 import React from 'react'
 import { InputWrapper, Label, StyledInput } from './styles'
-
-interface InputProps {
-  label?: string;
-  type?: string;
-  placeholder?: string;
-}
+import { InputProps } from '@/types';
 
 const Input = ({ label, type = "text", placeholder, ...props }: InputProps) => {
   return (

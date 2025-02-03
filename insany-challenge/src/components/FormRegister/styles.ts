@@ -84,6 +84,11 @@ export const SectionForm = styled.div`
     padding: 27px 0;
     gap: 14px;
     margin-top: 27px;
+
+    img {
+      width: auto;
+      height: auto;
+    }
     
     p {
       font-size: 0.875rem;

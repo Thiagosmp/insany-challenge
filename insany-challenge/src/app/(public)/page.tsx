@@ -1,6 +1,6 @@
 'use client'
-import Header from "@/components/Header/Header";
 
+import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
 import { Advantages, AdvantagesBanner, AdvantagesExclusive, ContentContactButton, ContentHeroWrapper, ContentMainWrapper, QuestionsFrequently } from "./styles";
 import Image from "next/image";
@@ -12,11 +12,15 @@ import Features from "@/components/Features/Features";
 import { theme } from "@/styles/theme";
 import Carousel from "@/components/Carousel/Carousel";
 import QuestionFrequentExpand from "@/components/QuestionFrequentExpand/QuestionFrequentExpand";
+import { useContextFeatures } from "@/context/ContextFeatures";
 
 export default function Home() {
+  const { posts, authors, featuresMedia } = useContextFeatures();
+
   return (
     <>
       <Header />
+
       <ContentMainWrapper>
         <ContentHeroWrapper>
           <span className="star">
@@ -43,6 +47,7 @@ export default function Home() {
         </ContentHeroWrapper>
         <FormRegister />
       </ContentMainWrapper>
+
       <SectionWrapper>
         <div className="contentSolutionCustomized">
           <div className="title">
@@ -73,10 +78,9 @@ export default function Home() {
             <span>Fale conosco</span>
           </div>
         </div>
-        
+
         <div className="contentPriceCustomized">
           <Image src="/img/poster.png" alt="poster" width={488} height={608} />
-
           <div className="contentPrice">
             <div className="price">
               <div>
@@ -102,6 +106,7 @@ export default function Home() {
           </div>
         </div>
       </SectionWrapper>
+
       <SectionWrapper>
         <ContentFeatures>
           <Features icon="/icons/icon-complex.svg">
@@ -122,20 +127,21 @@ export default function Home() {
           </Features>
         </ContentFeatures>
       </SectionWrapper>
+
       <SectionWrapper background={theme.colors.neutralGray01}>
         <ContentNotices>
           <div className="title">
             <span >Nosso Blog</span>
             <h2>Notícias do mundo da tecnologia</h2>
           </div>
-          <Carousel />
+          <Carousel posts={posts} authors={authors} featuresMedia={featuresMedia}/>
         </ContentNotices>
       </SectionWrapper>
+
       <Advantages>
         <AdvantagesExclusive>
           <div>
             <h2>03 vantagens exclusivas da SmartMoney</h2>
-
             <div className="specificationAdvantages">
               <div className="contentProgress">
                 <h3>Tecnologia de ponta</h3>
@@ -159,6 +165,7 @@ export default function Home() {
             </div>
           </div>
         </AdvantagesExclusive>
+
         <AdvantagesBanner>
           <div className="contentBanner">
             <div className="contentButton">
@@ -181,6 +188,7 @@ export default function Home() {
           </div>
         </AdvantagesBanner>
       </Advantages>
+
       <SectionWrapper>
         <ContentContactButton>
           <div>
@@ -198,6 +206,7 @@ export default function Home() {
           </div>
         </ContentContactButton>
       </SectionWrapper>
+
       <SectionWrapper background={theme.colors.neutralGray01}>
         <QuestionsFrequently>
           <div className="contentQuestions">
@@ -229,8 +238,9 @@ export default function Home() {
             </div>
           </div>
         </QuestionsFrequently>
-        <QuestionFrequentExpand />
+        <QuestionFrequentExpand/>
       </SectionWrapper>
+
       <Footer /> 
     </>
   );

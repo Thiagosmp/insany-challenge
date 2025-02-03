@@ -21,6 +21,7 @@ const Footer = () => {
             <SubmitButton>Receber Novidades</SubmitButton>
           </EmailWrapper>
         </InputEmail>
+
         <LinksAlign>
           <LinksFooter>
             <Link href="/">Quero ser cliente</Link>
@@ -50,8 +51,9 @@ const Footer = () => {
           </SocialFooter>
         </LinksAlign>
       </ContainerFooter>
+
       <Copy>
-        <Logo className='logoFooter' isSticky={false}>
+        <Logo className='logoFooter' $isSticky={false}>
           <Link href="/">
             <Image src="/icons/logo.svg" alt="logo" width={44} height={36.5} />
           </Link>

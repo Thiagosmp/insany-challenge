@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-
-interface DotProps {
-  active: boolean;
-}
+import { DotProps } from "@/types";
 
 export const CarouselContainer = styled.div`
   display: flex;
@@ -86,6 +83,12 @@ export const ContentNoticesCarousel = styled.div`
     display: flex;
     gap: 16px;
     margin-top: 24px;
+      
+    .avatar {
+      img {
+        border-radius: 180px;
+      }
+    }
 
     span {
       color: ${(props) => props.theme.colors.neutralDark300};

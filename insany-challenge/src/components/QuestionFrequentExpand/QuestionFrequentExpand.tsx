@@ -9,8 +9,6 @@ const QuestionsFrequent = [
   "O que é o Feed? Como faço para configurá-lo?",
 ]
 
-
-
 const QuestionFrequentExpand = () => {
   const [activeIndex, setActiveIndex] = useState(null as null | number);
 

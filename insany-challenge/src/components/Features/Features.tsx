@@ -1,12 +1,7 @@
 import React from 'react'
 import { FeaturesContent } from './styles'
 import Image from 'next/image'
-
-interface FeaturesProps {
-  children: React.ReactNode
-  icon?: string
-  alt?: string
-}
+import { FeaturesProps } from '@/types'
 
 const Features = ({ children, icon, alt}: FeaturesProps) => {
   return (

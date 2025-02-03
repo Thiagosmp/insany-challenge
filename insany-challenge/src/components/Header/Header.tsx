@@ -25,7 +25,6 @@ const Header = () => {
 
   return (
     <motion.header
-      // initial={{ position: 'relative' }}
       animate={{
         position: isSticky ? 'sticky' : 'relative', 
         top: isSticky ? 0 : 'auto', 
@@ -33,14 +32,14 @@ const Header = () => {
       }}
       transition={{ duration: 0.3 }}
     > 
-      <HeaderStyled isSticky={!isSticky}>
-        <Logo isSticky={!isSticky} >
+      <HeaderStyled $isSticky={!isSticky}>
+        <Logo $isSticky={!isSticky} >
           <Link href="/">
             <Image src="/icons/logo.svg" alt="logo" width={44} height={36.5} />
           </Link>
           <span>Smart<span className="bold">Money</span></span>
         </Logo>
-        <NavLinks isSticky={!isSticky}>
+        <NavLinks $isSticky={!isSticky}>
           <Link href="/">Quem somos</Link>
           <Link href="/">Soluções</Link>
           <Link href="/">Carreira</Link>
