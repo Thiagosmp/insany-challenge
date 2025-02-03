@@ -56,9 +56,8 @@ export const NavLinks = styled.div<{ $isSticky: boolean }>`
     color: ${({ $isSticky, theme }) => ($isSticky ? theme.colors.neutralDark700 : theme.colors.white)};
 
     &:hover {
-      background-color: ${({ $isSticky, theme }) => ($isSticky ? theme.colors.neutralGray01 : theme.colors.primaryDark)};
+      background-color: ${({ $isSticky, theme }) => ($isSticky ? theme.colors.white : theme.colors.primaryLight)};
       color: ${({ $isSticky, theme }) => ($isSticky ? theme.colors.primary : theme.colors.white)};
-      background-image: radial-gradient(circle, rgba(255, 255, 255, 0.2) 30%, rgba(255, 255, 255, 0) 80%);
     }
   }
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const FooterStyled = styled.footer`
   width: 100%;
   height: 100%;
-  padding: 0 115px;
+  padding: 0 112px;
   background-color: ${(props) => props.theme.colors.neutralDark800};
 `;
 
@@ -13,7 +13,6 @@ export const ContainerFooter = styled.div`
   padding: 120px 0;
   border-bottom: 1px solid ${(props) => props.theme.colors.neutralDark400};
 `;
-
 
 export const InputEmail = styled.div`
   display: flex;
@@ -38,21 +37,9 @@ export const EmailWrapper = styled.div`
   position: relative;
 
   button {
-    top: 25%;
+    top: 20%;
     right: 15px;
     position: absolute;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.white};
-    padding: 10px 16px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: bold;
-
-    &:hover {
-      background-color: ${(props) => props.theme.colors.primaryDark};
-    }
   }
 `;
 
@@ -65,22 +52,6 @@ export const EmailInput = styled.input`
   outline: none;
   color: ${(props) => props.theme.colors.neutralDark50};
   height: 64px;
-`;
-
-export const SubmitButton = styled.button`
-  position: absolute;
-  background-color: ${(props) => props.theme.colors.primary};
-  color: ${(props) => props.theme.colors.white};
-  padding: 10px 16px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  font-weight: bold;
-
-  &:hover {
-    background-color: ${(props) => props.theme.colors.primaryDark};
-  }
 `;
 
 export const LinksFooter = styled.div`

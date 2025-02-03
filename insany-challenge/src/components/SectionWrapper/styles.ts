@@ -1,4 +1,4 @@
-import { DotProps } from "@/types";
+import { IDotProps } from "@/types";
 import styled from "styled-components";
 
 export const SectionContent = styled.section<{ $background?: string }>`
@@ -78,6 +78,13 @@ export const SectionContent = styled.section<{ $background?: string }>`
         Image {
           width: auto;
           height: auto;
+        }
+
+        .arrow {
+          position: absolute;
+          bottom: -50px;
+          right: 30px;
+          transform: translateY(-50%);
         }
       }
 
@@ -210,7 +217,7 @@ export const DotsContainer = styled.div`
   gap: 5px;
 `;
 
-export const Dot = styled.div<DotProps>`
+export const Dot = styled.div<IDotProps>`
   width: 5px;
   height: 5px;
   border-radius: 50%;

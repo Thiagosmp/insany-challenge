@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { archivoSans } from "../../../styles/fonts";
-import { Providers } from "../../providers";
+import { archivoSans } from "../../../../styles/fonts";
+import { Providers } from "../../../providers";
 import Header from "@/components/Header/Header";
 
 export const metadata: Metadata = {

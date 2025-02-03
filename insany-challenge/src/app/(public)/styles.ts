@@ -282,7 +282,7 @@ export const ContentContactButton = styled.div`
       &:hover {
         background-color: ${(props) => props.theme.colors.primary};
         color: ${(props) => props.theme.colors.white};
-        transition:  .8s;
+        transition:  .4s;
       }
     }
   }

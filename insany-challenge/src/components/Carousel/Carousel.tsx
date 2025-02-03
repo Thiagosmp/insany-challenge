@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { CarouselContainer, ImageTrack, Image, ContentNoticesCarousel, DotsContainer, Dot } from "./styles";
 import { IAuthor, IFeaturedMedia, IPost } from "@/types";
 import { motion } from "framer-motion";
+import { useRouter } from 'next/navigation'; 
 
 type PostsCarousel = {
   posts: IPost[];
@@ -14,7 +15,13 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
   const [autoPlay, setAutoPlay] = useState(true);
   const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
+  const router = useRouter();
+
   const images = Array.from(featuresMedia.keys());
+
+  const handlePostClick = (postId: string) => {
+    router.push(`/post/${postId}`);
+  };
 
   useEffect(() => {
     if (!autoPlay) return;
@@ -89,6 +96,7 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
                   onMouseLeave={() => setZoomedImage(null)}
                   animate={{ scale: zoomedImage === post.id ? 1.5 : 1 }}
                   transition={{ duration: 0.8, ease: "backOut" }}
+                  onClick={() => handlePostClick(post.id)}
                 />
                 <ContentNoticesCarousel>
                   <div className="notice">

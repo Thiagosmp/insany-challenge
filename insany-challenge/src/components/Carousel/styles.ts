@@ -39,6 +39,11 @@ export const ImageTrack = styled(motion.div)`
   gap: 33px;
   margin-top: 56px;
   height: 520px;
+
+  .imgCarousel {
+    border-radius: 4px;
+    cursor: pointer;
+  }
 `;
 
 export const Image = styled(motion.img)`

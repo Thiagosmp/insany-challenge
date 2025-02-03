@@ -144,6 +144,7 @@ export default function Home() {
                   />
                 </motion.div>
               ))}
+              <Image src="/icons/arrow-duplicate-top.svg" alt="arrow" width={50} height={150} className="arrow" />
             </div>
           </div>
 
