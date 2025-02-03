@@ -2,7 +2,9 @@ export interface Post {
   id: string;
   date?: string;
   slug?: string;
-  title?: string;
+  title?: {
+    rendered: string;
+  }
   content?: {
     rendered: string;
   }
@@ -24,8 +26,9 @@ export interface Post {
 }
 
 export interface FeaturedMedia {
-  id: string;
-  date: string;
+  id?: string;
+  date?: string;
+  type?: string;
   title?: {
     rendered: string;
   }
@@ -48,7 +51,7 @@ export interface Author {
 }
 
 export interface DotProps {
-  active: boolean;
+  $active: boolean;
 }
 
 export interface InputProps {

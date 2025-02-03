@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CarouselContainer, ImageTrack, Image, ContentNoticesCarousel, DotsContainer, Dot } from "./styles";
 import { Author, FeaturedMedia, Post } from "@/types";
+import { motion } from "framer-motion";
 
 const images = [
   "/img/businessCarousel.png",
@@ -19,30 +20,31 @@ type PostsCarousel = {
 
 const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
   const [index, setIndex] = useState(0);
-  // const [autoPlay, setAutoPlay] = useState(true);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [zoomedImage, setZoomedImage] = useState<string | null>(null);
 
-  // useEffect(() => {
-  //   if (!autoPlay) return;
+  useEffect(() => {
+    if (!autoPlay) return;
 
-  //   const interval = setInterval(() => {
-  //     setIndex((prev) => (prev + 1) % images.length);
-  //   }, 3000);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 3000);
 
-  //   return () => clearInterval(interval);
-  // }, [autoPlay]);
+    return () => clearInterval(interval);
+  }, [autoPlay]);
 
   const slideLeft = () => {
-    // setAutoPlay(false);
+    setAutoPlay(false);
     setIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
   };
 
   const slideRight = () => {
-    // setAutoPlay(false);
+    setAutoPlay(false);
     setIndex((prev) => (prev + 1) % images.length);
   };
 
   const goToImage = ( i: number ) => {
-    // setAutoPlay(false);
+    setAutoPlay(false);
     setIndex(i);
   };
 
@@ -56,6 +58,10 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
       .replace(' de ', ' ')
       .replace(/^./, str => str.toUpperCase());
   };
+
+  function removeHtmlTags(str = '') {
+    return str.replace(/<[^>]*>/g, '');
+  }
 
   return (
     <CarouselContainer>
@@ -74,34 +80,44 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
       >
         {posts?.map((post, i) => (
           <div key={i}>
-            <div>{post.id}</div>
-            {/* <div>{post.content?.rendered}</div> */}
             {featuresMedia.has(post.id) && (
               <>
-                <Image src={featuresMedia.get(post.id)?.source_url} alt="Features Media" width={280} height={340} className="imgCarousel" />
+                <motion.img
+                  src={featuresMedia.get(post.id)?.source_url}
+                  alt="Features Media"
+                  width={280}
+                  height={340}
+                  className="imgCarousel"
+                  onMouseEnter={() => setZoomedImage(post.id)}
+                  onMouseLeave={() => setZoomedImage(null)}
+                  animate={{ scale: zoomedImage === post.id ? 1.5 : 1 }}
+                  transition={{ duration: 0.8, ease: "backOut" }}
+                />
                 <ContentNoticesCarousel>
                   <div className="notice">
-                    <span className="bold">Business</span>
+                    <span className="bold">{featuresMedia.get(post.id)?.type}</span>
                     <span>{formatDate(post.date)}</span>
                   </div>
-                  <span className="descriptionNotice">Sollicitudin a sagittis, risus nisl, fermentum, tincidunt dolor</span>
 
                   {authors.has(post.id) && (
-                    <div className="autorData">
-                      <div className="avatar">
-                        <Image
-                          src={authors.get(post.id)?.avatar_urls?.[48]}
-                          alt="Author Avatar"
-                          width={48}
-                          height={48}
-                        />
+                    <>
+                      <span className="descriptionNotice">{removeHtmlTags(post.title?.rendered)}</span>
+                      <div className="autorData">
+                        <div className="avatar">
+                          <Image
+                            src={authors.get(post.id)?.avatar_urls?.[48]}
+                            alt="Author Avatar"
+                            width={48}
+                            height={48}
+                          />
+                        </div>
+                        
+                        <div>
+                          <span className="nameAutor">{authors.get(post.id)?.name}</span>
+                          <span>{authors.get(post.id)?.slug}</span>
+                        </div>
                       </div>
-                      
-                      <div>
-                        <span className="nameAutor">{authors.get(post.id)?.name}</span>
-                        <span>{authors.get(post.id)?.slug}</span>
-                      </div>
-                    </div>
+                    </>
                   )}
                 </ContentNoticesCarousel>
               </>
@@ -112,7 +128,7 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
 
       <DotsContainer>
         {images.map((_, i) => (
-          <Dot key={i} active={i === index} onClick={() => goToImage(i)} />
+          <Dot key={i} $active={i === index} onClick={() => goToImage(i)} />
         ))}
       </DotsContainer>
 
@@ -121,5 +137,3 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
 }
 
 export default Carousel;
-
-{/* <Image src={featuresMedia.get(post.id)?.source_url} alt="arrow left" width={200} height={200} /> */}

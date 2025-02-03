@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
-export const SectionContent = styled.section.withConfig({
-  shouldForwardProp: (prop) => prop !== "background",
-}) <{ background?: string }>`
+export const SectionContent = styled.section<{ $background?: string }>`
   display: flex;
   justify-content: space-between;
   width: 100%;
   padding: 120px 112px 0 112px;
-  background: ${(props) => props.background ?? props.theme.colors.background};
+  background: ${(props) => props.$background ?? props.theme.colors.background};
 
   .contentSolutionCustomized {
     display: flex;

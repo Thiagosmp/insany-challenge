@@ -42,12 +42,7 @@ export const ImageTrack = styled(motion.div)`
 `;
 
 export const Image = styled(motion.img)`
-  .imgCarousel {
-    width: 280px;
-    height: 340px;
-    object-fit: cover;
-    border-radius: 10px;
-  }
+  
 `;
 
 export const ContentNoticesCarousel = styled.div`
@@ -77,6 +72,11 @@ export const ContentNoticesCarousel = styled.div`
     color: ${(props) => props.theme.colors.neutralDark700};
     line-height: 150%;
     margin-top: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis; 
   }
 
   .autorData {
@@ -120,13 +120,11 @@ export const DotsContainer = styled.div`
   margin-top: 90px;
 `;
 
-export const Dot = styled.div.withConfig({
-  shouldForwardProp: (prop) => prop !== "active",
-}) <DotProps>`
+export const Dot = styled.div<DotProps>`
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background-color: ${(props) => (props.active ? props.theme.colors.white : props.theme.colors.primary)};
+  background-color: ${(props) => (props.$active ? props.theme.colors.white : props.theme.colors.primary)};
   border: 1px solid ${(props) => props.theme.colors.primary};
   cursor: pointer;
   transition: background-color 0.3s ease;

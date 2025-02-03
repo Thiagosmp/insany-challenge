@@ -39,6 +39,7 @@ const Header = () => {
           </Link>
           <span>Smart<span className="bold">Money</span></span>
         </Logo>
+        
         <NavLinks $isSticky={!isSticky}>
           <Link href="/">Quem somos</Link>
           <Link href="/">Soluções</Link>
