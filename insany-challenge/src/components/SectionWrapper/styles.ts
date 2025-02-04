@@ -186,11 +186,22 @@ export const SectionContent = styled.section<{ $background?: string }>`
 
 export const ContentFeatures = styled.section`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
   width: 100%;
-  height: 187px;
   gap: 50px;
-  margin-bottom: 120px;
+  margin: 64px 0;
+
+  @media ( width > 1024px ){
+    height: 187px;
+    flex-direction: row;
+    margin-bottom: 120px;
+    align-items: flex-start;
+    text-align: start;
+    margin: 0 0 120px 0;
+  }
 `;
 
 export const ContentNotices = styled.section`

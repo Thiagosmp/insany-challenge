@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const FeaturesContent = styled.div`
   display:flex;
   flex-direction: column;
+  align-items: center;
 
   h3 {
     margin-top: 16px;
@@ -15,5 +16,9 @@ export const FeaturesContent = styled.div`
     font-size: 1rem;
     color: ${(props) => props.theme.colors.neutralDark300};
     line-height: 1.5;
+  }
+
+  @media ( width > 1024px ){
+    align-items: flex-start;
   }
 `;

@@ -146,16 +146,24 @@ export const ContentHeroWrapper = styled.div`
 `;
 
 export const Advantages = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
+
   width: 100%;
-  height: 994px;
-  padding: 120px 112px 120px 112px;
+  padding: 20px;
   background-image: url('/img/advantagesBanner.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: ${(props) => props.theme.colors.neutralDark800};
+  align-items: center;
+
+  @media ( width > 1024px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 994px;
+    padding: 120px 112px 120px 112px;
+  }
 `;
 
 export const AdvantagesExclusive = styled.div`
@@ -234,6 +242,10 @@ export const AdvantagesExclusive = styled.div`
       }
     }
   }
+
+  @media ( width > 1024px) {
+    
+  }
 `;
 
 export const AdvantagesBanner = styled.div`
@@ -250,21 +262,26 @@ export const AdvantagesBanner = styled.div`
 
     .contentButton {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       width: 100%;
       margin-top: 66px;
 
       Button {
         padding: 16px 69px;
       }
+
+      @media ( width > 1024px) {
+        justify-content: flex-end;
+      }
     }
     
     .alignImages {
       display: flex;
-      justify-content: flex-end;
+      justify-content: center;
       height: 100%;
       gap: 29px;
       margin-top: 70px;
+
 
       div {
         display: flex;
@@ -274,7 +291,7 @@ export const AdvantagesBanner = styled.div`
         img {
           border-radius: 8px;
         }
-
+        
         .arrowUp {
           display: flex;
           rotate: 180deg;
@@ -285,6 +302,11 @@ export const AdvantagesBanner = styled.div`
       .model {
         align-items: flex-end;
         position: relative;
+
+        .imgCarousel {
+          width: 156px;
+          height: 222px;
+        }
 
         div {
           position: absolute;
@@ -300,6 +322,53 @@ export const AdvantagesBanner = styled.div`
           font-size: 0.875rem;
           padding: 11px 18px 11px 12px;
         }
+
+        @media ( width > 1280px) {
+          .imgCarousel {
+            width: 282px;
+            height: 402px;
+          }
+        }
+      }
+
+      .graph {
+        position: relative;
+
+        .arrowUp {
+          width: 82px;
+          height: 30px;
+        }
+
+        .imgCarousel {
+          width: 156px;
+          height: 222px;
+        }
+
+        div {
+          position: absolute;
+          bottom: 43%;
+          left: -12%;
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+          align-items: center;
+          background-color: ${(props) => props.theme.colors.white};
+          border-radius: 40px;
+          color: ${(props) => props.theme.colors.neutralDark200};
+          font-size: 0.875rem;
+          padding: 11px 18px 11px 12px;
+        }
+
+        @media ( width > 1280px) {
+          .imgCarousel {
+            width: 282px;
+            height: 402px;
+          }
+        }
+      }
+
+      @media ( width > 1280px) {
+        justify-content: flex-end;
       }
     }
   }

@@ -257,10 +257,11 @@ export default function Home() {
                   <Image src="/icons/icon-star.svg" alt="star" width={16} height={16}/>
                   <span>Tecnologia disruptiva</span>
                 </div>  
-                <Image src="/icons/icon-arrow-long.svg" alt="model" width={149} height={55} className="arrowUp" />  
+                <Image src="/icons/icon-arrow-long.svg" alt="arrow" width={149} height={55} className="arrowUp" />  
               </div>
-              <div>
-                <Image src="/icons/icon-arrow-long.svg" alt="model" width={149} height={55} />  
+              <div className="graph">
+                <Image src="/icons/icon-arrow-long.svg" alt="arrow" width={149} height={55} 
+                className="arrowDown" />  
                 <motion.img
                   src="/img/graphProcess.png"
                   alt="graph advantages exclusive"

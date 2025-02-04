@@ -121,6 +121,7 @@ export const LinksFooter = styled.div`
   gap: 24px;
   color: ${(props) => props.theme.colors.white};
   font-size: 1rem;
+  line-height: 1.5;
 
   div {
     display: flex;
@@ -163,7 +164,6 @@ export const SocialFooter = styled.div`
   .social {
     font-size: 1rem;
     font-weight: 600;
-    line-height: 1.5;
   }
 
   a {
@@ -197,6 +197,12 @@ export const SocialFooter = styled.div`
     padding-left: 164px;
     align-items: normal;
     margin-top: 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
 `;
 
