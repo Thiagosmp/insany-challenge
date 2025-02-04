@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 export const SectionContent = styled.section<{ $background?: string }>`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   width: 100%;
-  padding: 120px 112px 0 112px;
+  padding: 0 24px;
   background: ${(props) => props.$background ?? props.theme.colors.background};
 
   .contentSolutionCustomized {
@@ -176,6 +176,12 @@ export const SectionContent = styled.section<{ $background?: string }>`
         }
       }
     }
+
+  @media ( width > 1024px ){
+    padding: 120px 112px 0 112px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
 `;
 
 export const ContentFeatures = styled.section`

@@ -20,6 +20,7 @@ export const ContainerFooter = styled.div`
 
   @media ( width >= 1480px ) {
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     padding: 120px 0;
   }
@@ -78,7 +79,7 @@ export const EmailWrapper = styled.div`
   gap: 16px;
   margin-top: 48px;
 
-  @media ( max-width : 680px ) {
+  @media ( max-width : 1479px ) {
     button {
       height: 56px;
       width: 100%;
@@ -86,7 +87,7 @@ export const EmailWrapper = styled.div`
     }
   }
 
-  @media ( width >= 1200px ) {
+  @media ( width >= 1480px ) {
     display: block;
     position: relative;
     margin-top: 0;
@@ -120,6 +121,12 @@ export const LinksFooter = styled.div`
   gap: 24px;
   color: ${(props) => props.theme.colors.white};
   font-size: 1rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
   a {
     text-decoration: none;
@@ -198,8 +205,16 @@ export const LinksAlign = styled.div`
   flex-direction: column;
   margin-top: 48px;
 
-  @media ( width > 680px ) {
+  @media ( min-width : 680px ) and ( max-width : 1479px) {
     flex-direction: row;
+    justify-content: center;
+  }
+
+  @media ( width >= 1480px ) {
+    display: flex;
+    flex-direction: row;
+    gap: 120px;
+    margin-top: 0;
   }
 `;
 
@@ -253,7 +268,7 @@ export const Copy = styled.div`
     }
   }
 
-  @media ( width > 680px ) {
+  @media ( width >= 1480px ) {
     display: flex;
     flex-direction: row;
     height: 135px;

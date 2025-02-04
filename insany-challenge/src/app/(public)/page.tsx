@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-import { Advantages, AdvantagesBanner, AdvantagesExclusive, ContentContactButton, ContentHeroWrapper, ContentMainWrapper, QuestionsFrequently } from "./styles";
+import { Advantages, AdvantagesBanner, AdvantagesExclusive, ContentContactButton, ContentHeroWrapper, ContentMainWrapper, Division, QuestionsFrequently, SectionWrapperContactButton, SectionWrapperQuestion } from "./styles";
 import Image from "next/image";
 import FormRegister from "@/components/FormRegister/FormRegister";
 import SectionWrapper from "@/components/SectionWrapper/SectionWrapper";
@@ -276,7 +276,7 @@ export default function Home() {
         </AdvantagesBanner>
       </Advantages>
 
-      <SectionWrapper>
+      <SectionWrapperContactButton>
         <ContentContactButton>
           <div>
             <Image src="/icons/icon-dolar.svg" alt="icon dolar" width={64} height={64} />
@@ -292,9 +292,11 @@ export default function Home() {
             <Button>Fale conosco</Button>
           </div>
         </ContentContactButton>
-      </SectionWrapper>
+      </SectionWrapperContactButton>
 
-      <SectionWrapper background={theme.colors.neutralGray01}>
+      <Division />
+      
+      <SectionWrapperQuestion>
         <QuestionsFrequently>
           <div className="contentQuestions">
             <div className="title">
@@ -302,31 +304,33 @@ export default function Home() {
               <h2>Pergunta mais frequentes</h2>
               <span>Separamos algumas perguntas e respostas que podem te ajudar na sua decisão</span>
             </div>
-            <div className="contactQuestions">
-              <Image src="/icons/doubts.svg" alt="icon doubts" width={32} height={32} />
-              <div>
-                <h3>Dúvidas?</h3>
-                <span>Envie uma mensagem para nosso time</span>
+            <div className="alignQuestions">
+              <div className="contactQuestions">
+                <Image src="/icons/doubts.svg" alt="icon doubts" width={32} height={32} />
+                <div>
+                  <h3>Dúvidas?</h3>
+                  <span>Envie uma mensagem para nosso time</span>
+                </div>
               </div>
-            </div>
-            <div className="contactQuestions">
-              <Image src="/icons/be-part.svg" alt="icon be part" width={32} height={32} />
-              <div>
-                <h3>Faça parte</h3>
-                <span>Cadastre-se para transformar sua empresa</span>
+              <div className="contactQuestions">
+                <Image src="/icons/be-part.svg" alt="icon be part" width={32} height={32} />
+                <div>
+                  <h3>Faça parte</h3>
+                  <span>Cadastre-se para transformar sua empresa</span>
+                </div>
               </div>
-            </div>
-            <div className="contactQuestions">
-              <Image src="/icons/whats.svg" alt="icon whatsapp" width={32} height={32} />
-              <div>
-                <h3>Chama no zap</h3>
-                <span>Fale com conosso comercial</span>
+              <div className="contactQuestions">
+                <Image src="/icons/whats.svg" alt="icon whatsapp" width={32} height={32} />
+                <div>
+                  <h3>Chama no zap</h3>
+                  <span>Fale com conosso comercial</span>
+                </div>
               </div>
             </div>
           </div>
         </QuestionsFrequently>
         <QuestionFrequentExpand/>
-      </SectionWrapper>
+      </SectionWrapperQuestion>
 
       <Footer /> 
     </>

@@ -16,6 +16,7 @@ export const ContentQuestionExpand = styled.div`
       justify-content: space-between;
       align-items: center;
       padding: 41px 33px;
+      border-bottom: 1px solid ${(props) => props.theme.colors.neutralGrayOpacity};
 
       div {
         display: flex;
@@ -49,8 +50,13 @@ export const ContentQuestionExpand = styled.div`
           color: ${(props) => props.theme.colors.primary};
         }
       }
+
+      @media ( width > 1024px) {
+        border-bottom: none;
+      }
     }
-}`;
+  }
+`;
 
 export const Response = styled.div<{ $active?: boolean }>`
   display: ${({ $active }) => ($active ? "block" : "none")};

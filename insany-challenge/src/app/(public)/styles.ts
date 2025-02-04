@@ -106,66 +106,66 @@ export const AdvantagesExclusive = styled.div`
       font-weight: 600;
     }
 
-  .specificationAdvantages {
-    display: flex;
-    gap: 32px;
-    margin-top: 76px;
-    padding: 33px 42px 33px 34px;
-    background-color: ${(props) => props.theme.colors.white};;
-    border-radius: 6px;
-
-    .contentProgress {
+    .specificationAdvantages {
       display: flex;
-      gap: 17px;
+      gap: 32px;
+      margin-top: 76px;
+      padding: 33px 42px 33px 34px;
+      background-color: ${(props) => props.theme.colors.white};;
+      border-radius: 6px;
 
-      h3 {
-        font-size: 1.5rem;
-        color: ${(props) => props.theme.colors.neutralDark500};
+      .contentProgress {
+        display: flex;
+        gap: 17px;
+
+        h3 {
+          font-size: 1.5rem;
+          color: ${(props) => props.theme.colors.neutralDark500};
+        }
+
+        p {
+          font-size: 1rem;
+          color: ${(props) => props.theme.colors.neutralDark300};
+        }
+
+        .progressBar {
+          background-color: ${(props) => props.theme.colors.neutralGrayOpacity};
+          width: 100%;
+          border-radius: 8px;
+          border: none;
+
+          span {
+            position: relative;
+            width: 35%;
+            height: 6px;
+            background-color: ${(props) => props.theme.colors.primary};
+            border-radius: 8px;
+          }
+        }
       }
+    }
 
-      p {
-        font-size: 1rem;
-        color: ${(props) => props.theme.colors.neutralDark300};
-      }
+    .advantages {
+      color: ${(props) => props.theme.colors.neutralGray02};
 
-      .progressBar {
-        background-color: ${(props) => props.theme.colors.neutralGrayOpacity};
-        width: 100%;
-        border-radius: 8px;
-        border: none;
+      div {
+        padding: 33px 42px 33px 34px;
+        margin-top: 24px;
+        display: flex;
+        gap: 17px;
+
+        h3 {
+          font-weight: 700;
+          font-size: 1.5rem;
+        }
 
         span {
-          position: relative;
-          width: 35%;
-          height: 6px;
-          background-color: ${(props) => props.theme.colors.primary};
-          border-radius: 8px;
+          font-size: 1.125rem;
+          line-height: 1.5;
         }
       }
     }
   }
-
-  .advantages {
-    color: ${(props) => props.theme.colors.neutralGray02};
-
-    div {
-      padding: 33px 42px 33px 34px;
-      margin-top: 24px;
-      display: flex;
-      gap: 17px;
-
-      h3 {
-        font-weight: 700;
-        font-size: 1.5rem;
-      }
-
-      span {
-        font-size: 1.125rem;
-        line-height: 1.5;
-      }
-    }
-  }
-}
 `;
 
 export const AdvantagesBanner = styled.div`
@@ -242,12 +242,13 @@ export const ContentContactButton = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  gap: 95px;
-  margin-bottom: 120px;
+  gap: 56px;
+  margin: 64px 0;
+  flex-direction: column;
 
   .division {
-    width: 4px;
-    height: 100%;
+    height: 4px;
+    width: 100%;
     background-color: ${(props) => props.theme.colors.neutralGrayOpacity};
   }
 
@@ -271,11 +272,16 @@ export const ContentContactButton = styled.div`
       color: ${(props) => props.theme.colors.neutralDark200};
       line-height: 1.5;
       margin-top: 8px;
+      text-align: center;
     }
 
     Button {
       padding: 16px 56px;
       margin-top: 32px;
+    }
+
+    @media ( width > 1024px) {
+      text-align: start;
     }
   }
 
@@ -292,25 +298,72 @@ export const ContentContactButton = styled.div`
       }
     }
   }
+
+  @media ( width > 1024px) {
+    flex-direction: row;
+    margin: 0 0 120px 0;
+    gap: 95px;
+
+    .division {
+      width: 4px;
+      height: 100%;
+      background-color: ${(props) => props.theme.colors.neutralGrayOpacity};
+    }
+  }
 `;
 
-export const QuestionsFrequently = styled.div`
+export const SectionWrapperContactButton = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 24px;
+  background: ${(props) => props.theme.colors.white};
+  gap: 20px;
+
+  @media ( width > 1024px ){
+    padding: 120px 112px 0 112px;
+    flex-direction: row;
+    justify-content: space-between;
+    background: ${(props) => props.theme.colors.white};
+  }
+`;
+
+export const SectionWrapperQuestion = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 0 24px;
+  background: ${(props) => props.theme.colors.white};
+  gap: 20px;
+
+  @media ( width > 1024px ){
+    padding: 120px 112px 0 112px;
+    flex-direction: row;
+    justify-content: space-between;
+    background: ${(props) => props.theme.colors.neutralGray01};
+  }
+`;
+
+
+export const QuestionsFrequently = styled.div`
   height: 500px;
   width: 100%;
   display: flex;
+  flex-direction: column;
 
   .contentQuestions {
     display: flex;
     flex-direction: column;
     gap: 44px;
+    align-items: center;
     
     .title {
       display: flex;
       flex-direction: column;
       gap: 16px;
       margin-bottom: 16px;
-      width: 400px;
+      
+      text-align: center;
 
       p {
         font-size: 0.875rem;
@@ -319,36 +372,83 @@ export const QuestionsFrequently = styled.div`
       }
 
       h2 {
-        font-size: 2.5rem;
+        font-size: 1.5rem;
         color: ${(props) => props.theme.colors.neutralDark800};
         font-weight: 600;
         line-height: 1.25;
       }
 
       span {
-        font-size: 1.125rem;
+        font-size: 1rem;
         color: ${(props) => props.theme.colors.neutralDark200};
         line-height: 1.5;
       }
     }
 
-    .contactQuestions {
+    .alignQuestions {
       display: flex;
-      gap: 32px;
+      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      width: 260px;
+      gap: 44px;
 
-      h3 {
-        font-size: 1.125rem;
-        color: ${(props) => props.theme.colors.neutralDark800};
-        line-height: 1.5;
-        font-weight: 600;
+      .contactQuestions {
+        width: 100%;
+        display: flex;
+        gap: 32px;
+        align-items: center;
+
+        h3 {
+          font-size: 1.125rem;
+          color: ${(props) => props.theme.colors.neutralDark800};
+          line-height: 1.5;
+          font-weight: 600;
+        }
+
+        span {
+          font-size: 0.875rem;
+          line-height: 1.5;
+          color: ${(props) => props.theme.colors.neutralDark200};
+        }
+      }
+    }
+    
+
+    @media ( width > 1024px) {
+      .title {
+        text-align: start;
+        width: 400px;
+
+        h2 {
+          font-size: 2.5rem;
+        }
+
+        span {
+          font-size: 1.125rem;
+        }
       }
 
-      span {
-        font-size: 0.875rem;
-        line-height: 1.5;
-        color: ${(props) => props.theme.colors.neutralDark200};
+      .alignQuestions {
+        width: auto;
+        align-items: start;
       }
     }
   }
+
+  @media ( width > 1024px) {
+    .contentQuestions {
+      align-items: start;
+    }
+  }
 `;
+
+export const Division = styled.div`
+  @media ( max-width : 1024px) {
+    width: 100%;
+    height: 64px;
+    background-color: ${(props) => props.theme.colors.neutralGray01};
+  }
+`;
+
+
