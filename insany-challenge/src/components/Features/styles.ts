@@ -14,6 +14,6 @@ export const FeaturesContent = styled.div`
     margin-top: 6px;
     font-size: 1rem;
     color: ${(props) => props.theme.colors.neutralDark300};
-    line-height: 150%;
+    line-height: 1.5;
   }
 `;

@@ -29,7 +29,7 @@ const Footer = () => {
     <FooterStyled>
       <ContainerFooter>
         <InputEmail>
-          <div>
+          <div className='email'>
             <Image src="/icons/mail.svg" alt="icon-email" width={32} height={28} />
             <h3>Fique por dentro das novidades</h3>
             <p>Cadastre seu e-mail para receber conteúdo</p>
@@ -49,30 +49,36 @@ const Footer = () => {
 
         <LinksAlign>
           <LinksFooter>
-            <Link href="/">Quero ser cliente</Link>
-            <Link href="/">Acessar conta</Link>
-            <Link href="/">Dúvidas</Link>
-            <Link href="/">Termos e condições</Link>
-            <Link href="/">Fale conosco</Link>
+            <div>
+              <Link href="/">Quero ser cliente</Link>
+              <Link href="/">Acessar conta</Link>
+              <Link href="/">Dúvidas</Link>
+            </div>
+            <div>
+              <Link href="/">Termos e condições</Link>
+              <Link href="/">Fale conosco</Link>
+            </div>
           </LinksFooter>
           <SocialFooter>
-            Acompanha nas redes
-            <Link href="/" target='blank'>
-              <Image src="/icons/icon-twitch.svg" alt="logo-twitter" width={32} height={32} />
-              Twitch
-            </Link>
-            <Link href="/" target='blank'>
-              <Image src="/icons/icon-linkedin.svg" alt="logo-linkedin" width={32} height={32} />
-              Linkedin
-            </Link>
-            <Link href="/" target='blank'>
-              <Image src="/icons/icon-instagram.svg" alt="logo-instagram" width={32} height={32} />
-              Instagram
-            </Link>
-            <Link href="/" target='blank'>
-              <Image src="/icons/icon-facebook.svg" alt="logo-facebook" width={32} height={32} />
-              Facebook
-            </Link>
+            <span className='social'>Acompanha nas redes</span>
+            <div>
+              <Link href="/" target='blank'>
+                <Image src="/icons/icon-twitch.svg" alt="logo-twitter" width={32} height={32} />
+                <span>Twitch</span>
+              </Link>
+              <Link href="/" target='blank'>
+                <Image src="/icons/icon-linkedin.svg" alt="logo-linkedin" width={32} height={32} />
+                <span>Linkedin</span>
+              </Link>
+              <Link href="/" target='blank'>
+                <Image src="/icons/icon-instagram.svg" alt="logo-instagram" width={32} height={32} />
+                <span>Instagram</span>
+              </Link>
+              <Link href="/" target='blank'>
+                <Image src="/icons/icon-facebook.svg" alt="logo-facebook" width={32} height={32} />
+                <span>Facebook</span>
+              </Link>
+            </div>
           </SocialFooter>
         </LinksAlign>
       </ContainerFooter>

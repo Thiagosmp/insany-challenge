@@ -27,7 +27,7 @@ export const SectionForm = styled.div`
     color: ${(props) => props.theme.colors.neutralDark700};
     margin-top: 8px;
     font-weight: 600;
-    line-height: 125%;
+    line-height: 1.25;
   }
 
   .contentRadioButton {
@@ -74,7 +74,7 @@ export const SectionForm = styled.div`
     color: ${(props) => props.theme.colors.neutralDark100};
     margin-top: 30px;
     font-size: 0.875rem;
-    line-height: 125%;
+    line-height: 1.25;
 
     a {
       color: ${(props) => props.theme.colors.neutralDark100};

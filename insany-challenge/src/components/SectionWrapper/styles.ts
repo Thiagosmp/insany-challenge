@@ -18,7 +18,7 @@ export const SectionContent = styled.section<{ $background?: string }>`
         font-size: 2.5rem;
         font-weight: 600;
         color: ${(props) => props.theme.colors.neutralDark800};
-        line-height: 125%;
+        line-height: 1.25;
         margin-bottom: 8px;
       }
 
@@ -204,7 +204,7 @@ export const ContentNotices = styled.section`
       margin-top: 13px;
       font-weight: 600;
       color: ${(props) => props.theme.colors.neutralDark700};
-      line-height: 125%;
+      line-height: 1.25;
       width: 400px;
     }
   }

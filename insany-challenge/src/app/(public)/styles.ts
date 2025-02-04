@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+`;
+
 export const ContentMainWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  width: 100%;
   background-image: url('/img/bg-main.png');
   background-size: cover;
   background-position: center;
@@ -34,7 +40,7 @@ export const ContentHeroWrapper = styled.div`
     font-weight: 700;
     color: ${(props) => props.theme.colors.white};
     margin-top: 20px;
-    line-height: 125%;
+    line-height: 1.25;
   }
 
   span {
@@ -95,7 +101,7 @@ export const AdvantagesExclusive = styled.div`
     
     h2 {
       color: ${(props) => props.theme.colors.white};
-      line-height: 125%;
+      line-height: 1.25;
       font-size: 2.5rem;
       font-weight: 600;
     }
@@ -155,7 +161,7 @@ export const AdvantagesExclusive = styled.div`
 
       span {
         font-size: 1.125rem;
-        line-height: 150%;
+        line-height: 1.5;
       }
     }
   }
@@ -256,14 +262,14 @@ export const ContentContactButton = styled.div`
       margin-top: 32px;
       width: 320px;
       text-align: center;
-      line-height: 125%;
+      line-height: 1.25;
       font-weight: 600;
     }
 
     span {
       font-size: 1.125rem;
       color: ${(props) => props.theme.colors.neutralDark200};
-      line-height: 150%;
+      line-height: 1.5;
       margin-top: 8px;
     }
 
@@ -316,13 +322,13 @@ export const QuestionsFrequently = styled.div`
         font-size: 2.5rem;
         color: ${(props) => props.theme.colors.neutralDark800};
         font-weight: 600;
-        line-height: 125%;
+        line-height: 1.25;
       }
 
       span {
         font-size: 1.125rem;
         color: ${(props) => props.theme.colors.neutralDark200};
-        line-height: 150%;
+        line-height: 1.5;
       }
     }
 
@@ -334,13 +340,13 @@ export const QuestionsFrequently = styled.div`
       h3 {
         font-size: 1.125rem;
         color: ${(props) => props.theme.colors.neutralDark800};
-        line-height: 150%;
+        line-height: 1.5;
         font-weight: 600;
       }
 
       span {
         font-size: 0.875rem;
-        line-height: 150%;
+        line-height: 1.5;
         color: ${(props) => props.theme.colors.neutralDark200};
       }
     }

@@ -75,7 +75,7 @@ export const ContentNoticesCarousel = styled.div`
   .descriptionNotice {
     font-size: 1rem;
     color: ${(props) => props.theme.colors.neutralDark700};
-    line-height: 150%;
+    line-height: 1.5;
     margin-top: 12px;
     display: -webkit-box;
     -webkit-line-clamp: 3; 
