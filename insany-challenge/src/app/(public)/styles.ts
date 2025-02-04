@@ -8,21 +8,27 @@ export const Container = styled.div`
 `;
 
 export const ContentMainWrapper = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   background-image: url('/img/bg-main.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-color: ${(props) => props.theme.colors.neutralDark800};
+
+  @media ( width > 1280px ) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const ContentHeroWrapper = styled.div`
   display: flex;
-  width: 100%;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.red};
-  padding: 170px 121px 156px 112px ;
+  padding: 128px 24px 0 24px;
+  justify-content: center;
+  align-items: center;
 
   .star {
     width: 200px;
@@ -33,10 +39,12 @@ export const ContentHeroWrapper = styled.div`
     padding: 10px 20px 10px 16px;
     border: 2px solid ${(props) => props.theme.colors.neutralDarkBorder}; ;
     border-radius: 40px;
+    align-items: center;
   }
 
   h1 {
-    font-size: 3.5rem;
+    text-align: center;
+    font-size: 2rem;
     font-weight: 700;
     color: ${(props) => props.theme.colors.white};
     margin-top: 20px;
@@ -47,17 +55,28 @@ export const ContentHeroWrapper = styled.div`
     font-size: 1.125rem;
     color: ${(props) => props.theme.colors.white};
     margin-top: 13px;
+    line-height: 1.5;
+    text-align: center;
   }
 
-  .division {
-    width: 32px;
-    height: 2px;
-    background-color: ${(props) => props.theme.colors.primary};
-    margin: 56px 0;
+  .alignDivision {
+    display: flex;
+    justify-content: center;
+
+    .division {
+      width: 32px;
+      height: 2px;
+      background-color: ${(props) => props.theme.colors.primary};
+      margin: 56px 0;
+    }
   }
 
   .bancDetails {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
     gap: 64px;
 
     div {
@@ -73,6 +92,55 @@ export const ContentHeroWrapper = styled.div`
         font-size: 1rem;
         color: ${(props) => props.theme.colors.white};
       }
+    }
+  }
+
+  @media ( width > 1280px ) and ( width < 1440px ) {
+    max-width: 730px;
+    padding: 110px 0 110px 90px;
+    align-items: start;
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: start;
+    }
+
+    span {
+      text-align: start;
+      font-size: 0.875rem;
+    }
+
+    .alignDivision {
+      justify-content: start;
+    }
+
+    .bancDetails {
+      flex-direction: row;
+      text-align: start;
+    }
+  }
+
+  @media ( width >= 1440px ) {
+    max-width: 730px;
+    padding: 170px 0 156px 112px;
+    align-items: start;
+
+    h1 {
+      font-size: 3.5rem;
+      text-align: start;
+    }
+
+    span {
+      text-align: start;
+    }
+
+    .alignDivision {
+      justify-content: start;
+    }
+
+    .bancDetails {
+      flex-direction: row;
+      text-align: start;
     }
   }
 `;

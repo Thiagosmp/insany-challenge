@@ -2,10 +2,16 @@ import styled from 'styled-components';
 
 export const ContentFormWrapper = styled.div`
   display: flex;
-  padding: 134px 112px 0 43px;
-  justify-content: flex-end;
+  justify-content: center;
   position: relative;
-  top: 35px;
+  top: 80px;
+  padding: 0 20px;
+
+  @media ( width > 1330px ) {
+    padding: 134px 112px 0 0;
+    justify-content: flex-end;
+    top:35px;
+  }
 `;
 
 export const SectionForm = styled.div`
@@ -13,9 +19,11 @@ export const SectionForm = styled.div`
   width: 488px;
   flex-direction: column;
   background-color: ${(props) => props.theme.colors.white};
-  padding: 40px 43px 0 43px;
+  padding: 24px;
   border-radius: 6px;
   box-shadow: 0px 30px 50px -10px rgba(76, 74, 94, 0.2);
+  z-index: 1;
+  padding: 46px 43px 0 43px;
 
   p {
     font-size: 0.9rem;
@@ -74,7 +82,7 @@ export const SectionForm = styled.div`
     color: ${(props) => props.theme.colors.neutralDark100};
     margin-top: 30px;
     font-size: 0.875rem;
-    line-height: 1.25;
+    line-height: 1.5;
 
     a {
       color: ${(props) => props.theme.colors.neutralDark100};
@@ -98,6 +106,14 @@ export const SectionForm = styled.div`
     p {
       font-size: 0.875rem;
       color: ${(props) => props.theme.colors.neutralDark500};
+    }
+  }
+
+  @media ( width >= 320px ) and ( width <= 545px ) {
+    padding: 24px 24px 0 24px;
+
+    h2 {
+      font-size: 1.5rem;
     }
   }
 `;

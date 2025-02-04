@@ -50,7 +50,9 @@ export default function Home() {
           </span>
           <h1>Conta digital que não é só uma conta digital.</h1>
           <span>Pellentesque rutrum turpis non est turpis pretium morbi urna.</span>
-          <span className="division"></span>
+          <div className="alignDivision">
+            <span className="division"></span>
+          </div>
           <div className="bancDetails">
             <div>
               <h2>120</h2>
