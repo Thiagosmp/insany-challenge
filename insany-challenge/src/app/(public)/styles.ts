@@ -148,9 +148,8 @@ export const ContentHeroWrapper = styled.div`
 export const Advantages = styled.div`
   display: flex;
   flex-direction: column;
-
   width: 100%;
-  padding: 20px;
+  padding: 64px 14px;
   background-image: url('/img/advantagesBanner.png');
   background-size: cover;
   background-position: center;
@@ -162,13 +161,19 @@ export const Advantages = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     height: 994px;
+    padding: 40px;
+  }
+
+  @media ( width > 1440px) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    height: 994px;
     padding: 120px 112px 120px 112px;
   }
 `;
 
 export const AdvantagesExclusive = styled.div`
   display: flex;
-  width: 500px;
   color: ${(props) => props.theme.colors.neutralDark800};
   
   div {
@@ -178,14 +183,15 @@ export const AdvantagesExclusive = styled.div`
     h2 {
       color: ${(props) => props.theme.colors.white};
       line-height: 1.25;
-      font-size: 2.5rem;
+      font-size: 1.5rem;
       font-weight: 600;
+      text-align: center;
     }
 
     .specificationAdvantages {
       display: flex;
       gap: 32px;
-      margin-top: 76px;
+      margin-top: 48px;
       padding: 33px 42px 33px 34px;
       background-color: ${(props) => props.theme.colors.white};;
       border-radius: 6px;
@@ -225,8 +231,7 @@ export const AdvantagesExclusive = styled.div`
       color: ${(props) => props.theme.colors.neutralGray02};
 
       div {
-        padding: 33px 42px 33px 34px;
-        margin-top: 24px;
+        padding: 58px 34px 34px 34px;
         display: flex;
         gap: 17px;
 
@@ -244,7 +249,18 @@ export const AdvantagesExclusive = styled.div`
   }
 
   @media ( width > 1024px) {
-    
+    width: 500px;
+
+    div {
+      h2 {
+        font-size: 2.5rem;
+        text-align: start;
+      }
+
+      .specificationAdvantages {
+        margin-top: 76px;
+      }
+    }
   }
 `;
 
@@ -264,7 +280,7 @@ export const AdvantagesBanner = styled.div`
       display: flex;
       justify-content: center;
       width: 100%;
-      margin-top: 66px;
+      margin-top: 32px;
 
       Button {
         padding: 16px 69px;
@@ -272,6 +288,7 @@ export const AdvantagesBanner = styled.div`
 
       @media ( width > 1024px) {
         justify-content: flex-end;
+        margin-top: 66px;
       }
     }
     
@@ -279,9 +296,8 @@ export const AdvantagesBanner = styled.div`
       display: flex;
       justify-content: center;
       height: 100%;
-      gap: 29px;
-      margin-top: 70px;
-
+      gap: 16px;
+      margin-top: 64px;
 
       div {
         display: flex;
@@ -296,6 +312,15 @@ export const AdvantagesBanner = styled.div`
           display: flex;
           rotate: 180deg;
           align-items: flex-end;
+          width: 90px;
+          height: 40px;
+        }
+
+        @media ( width > 1280px) {
+          .arrowUp {
+            width: 149px;
+            height: 55px;
+          }
         }
       }
 
@@ -310,17 +335,33 @@ export const AdvantagesBanner = styled.div`
 
         div {
           position: absolute;
-          bottom: 43%;
+          bottom: 33%;
           left: -12%;
           display: flex;
           flex-direction: row;
           gap: 8px;
+          font-size: 0.625rem;
           align-items: center;
           background-color: ${(props) => props.theme.colors.white};
           border-radius: 40px;
           color: ${(props) => props.theme.colors.neutralDark200};
-          font-size: 0.875rem;
-          padding: 11px 18px 11px 12px;
+          padding: 5px 10px;
+
+          @media ( min-width : 1025px) and ( max-width : 1280px) {
+            bottom: 72%;
+          } 
+
+          @media ( min-width : 1281px) and ( max-width : 1440px) {
+            font-size: 0.875rem;
+            bottom: 53%;
+            padding: 11px 18px 11px 12px;
+          }
+
+          @media ( width > 1440px ) {
+            bottom: 43%;
+            font-size: 0.875rem;
+            padding: 11px 18px 11px 12px;
+          }
         }
 
         @media ( width > 1280px) {
@@ -334,14 +375,14 @@ export const AdvantagesBanner = styled.div`
       .graph {
         position: relative;
 
-        .arrowUp {
-          width: 82px;
-          height: 30px;
-        }
-
         .imgCarousel {
           width: 156px;
           height: 222px;
+        }
+
+        .arrowDown {
+          width: 90px;
+          height: 40px;
         }
 
         div {
@@ -360,6 +401,11 @@ export const AdvantagesBanner = styled.div`
         }
 
         @media ( width > 1280px) {
+          .arrowDown {
+            width: 149px;
+            height: 55px;
+          }
+          
           .imgCarousel {
             width: 282px;
             height: 402px;
@@ -367,8 +413,13 @@ export const AdvantagesBanner = styled.div`
         }
       }
 
+      @media ( width > 1024px) {
+        margin-top: 70px;
+      }
+
       @media ( width > 1280px) {
         justify-content: flex-end;
+        gap: 29px;
       }
     }
   }

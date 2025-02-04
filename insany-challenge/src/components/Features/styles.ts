@@ -4,6 +4,7 @@ export const FeaturesContent = styled.div`
   display:flex;
   flex-direction: column;
   align-items: center;
+  max-width: 630px;
 
   h3 {
     margin-top: 16px;
@@ -20,5 +21,10 @@ export const FeaturesContent = styled.div`
 
   @media ( width > 1024px ){
     align-items: flex-start;
+
+    span {
+      display: flex;
+      text-align: start;
+    }
   }
 `;
