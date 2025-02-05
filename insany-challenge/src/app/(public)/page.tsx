@@ -12,9 +12,9 @@ import Features from "@/components/Features/Features";
 import { theme } from "@/styles/theme";
 import Carousel from "@/components/Carousel/Carousel";
 import QuestionFrequentExpand from "@/components/QuestionFrequentExpand/QuestionFrequentExpand";
-import { useContextFeatures } from "@/context/ContextFeatures";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { useContextFeatures } from "@/context/ContextFeatures";
 
 const images = [
   "/img/modelPoster.png",

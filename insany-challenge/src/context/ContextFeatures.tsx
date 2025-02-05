@@ -1,5 +1,6 @@
 import { IAuthor, IFeaturedMedia, IContextFeaturesType, IPost } from '@/types';
-import React, { createContext, useState, useEffect, ReactNode } from 'react';
+import React, { createContext, ReactNode } from 'react';
+import { useQuery, useQueries, UseQueryOptions } from '@tanstack/react-query';
 
 const ContextFeatures = createContext<IContextFeaturesType | undefined>(undefined);
 
@@ -7,53 +8,76 @@ interface ContextFeaturesProps {
   children: ReactNode;
 }
 
+const fetchPosts = async (): Promise<IPost[]> => {
+  const response = await fetch('https://devblog.insanydesign.com/wp-json/wp/v2/posts/');
+  if (!response.ok) throw new Error("Erro ao buscar posts");
+  return response.json();
+};
+
+const fetchAuthorDetails = async (authorUrl: string): Promise<IAuthor> => {
+  const response = await fetch(authorUrl);
+  if (!response.ok) throw new Error("Erro ao buscar autor");
+  return response.json();
+};
+
+const fetchFeaturesMedia = async (featureUrl: string): Promise<IFeaturedMedia> => {
+  const response = await fetch(featureUrl);
+  if (!response.ok) throw new Error("Erro ao buscar features");
+  return response.json();
+};
+
 export const ContextFeaturesProvider = ({ children }: ContextFeaturesProps) => {
-  const [posts, setPosts] = useState<IPost[]>([]);
-  const [authors, setAuthors] = useState<Map<string, IAuthor>>(new Map());
-  const [featuresMedia, setFeaturesMedia] = useState<Map<string, IFeaturedMedia>>(new Map());
+  const { data: posts = [] } = useQuery<IPost[], Error>({
+    queryKey: ['posts'],
+    queryFn: fetchPosts,
+    staleTime: 1000 * 60 * 5, // 5 minutos
+    cacheTime: 1000 * 60 * 10, // 10 minutos
+  } as UseQueryOptions<IPost[], Error>);
+  
+  const authorsQueries = useQueries({
+    queries: posts.map((post) => ({
+      queryKey: ['author', post.id],
+      queryFn: () => fetchAuthorDetails(post._links.author[0]?.href),
+      enabled: !!post._links.author?.length,
+    })),
+  });
 
-  const fetchPosts = async () => {
-    const response = await fetch('https://devblog.insanydesign.com/wp-json/wp/v2/posts/');
-    const data = await response.json();
-    setPosts(prev => [...prev, ...data]);
-  };
+  const mediaQueries = useQueries({
+    queries: posts
+      .map((post) => {
+        const mediaUrl = post._links?.['wp:featuredmedia']?.[0]?.href;
 
-  const fetchAuthorDetails = async (authorUrl: string, postId: string) => {
-    const response = await fetch(authorUrl);
-    const data = await response.json();
-    setAuthors(prev => new Map([...prev, [postId, data]]));
-  };
+        if (!mediaUrl) return null; 
 
-  const fetchFeaturesMedia = async (featureUrl: string, featureId: string) => {
-    const response = await fetch(featureUrl);
-    const data = await response.json();
-    setFeaturesMedia(prev => new Map(prev).set(featureId, data));
-  };
+        return {
+          queryKey: ['media', post.id],
+          queryFn: () => fetchFeaturesMedia(mediaUrl),
+        };
+      })
+      .filter((query): query is { queryKey: string[]; queryFn: () => Promise<IFeaturedMedia> } => Boolean(query)), 
+  });
 
-  useEffect(() => {
-    fetchPosts();
-  }, []);
+  const authors = new Map(
+    posts
+      .map((post, index) => [post.id, authorsQueries[index]?.data] as const) 
+      .filter((pair): pair is [string, IAuthor] => pair[1] !== undefined) 
+  );
 
-  useEffect(() => {
-    posts.forEach(post => {
-      const authorUrl = post._links.author[0]?.href;
-      if (authorUrl) {
-        fetchAuthorDetails(authorUrl, post.id);
-      }
-    });
-  }, [posts]);
-
-  useEffect(() => {
-    posts.forEach(post => {
-      const featuresMediaUrl = post._links['wp:featuredmedia']?.[0]?.href;
-      if (featuresMediaUrl) {
-        fetchFeaturesMedia(featuresMediaUrl, post.id);
-      }
-    });
-  }, [posts]);
+  const featuresMedia = new Map(
+    posts
+      .map((post, index) => [post.id, mediaQueries[index]?.data] as const) 
+      .filter((pair): pair is [string, IFeaturedMedia] => pair[1] !== undefined) 
+  );
 
   return (
-    <ContextFeatures.Provider value={{ posts, authors, featuresMedia, fetchPosts, fetchAuthorDetails, fetchFeaturesMedia }}>
+    <ContextFeatures.Provider value={{
+      posts,
+      authors,
+      featuresMedia,
+      fetchPosts,
+      fetchAuthorDetails,
+      fetchFeaturesMedia
+    }}>
       {children}
     </ContextFeatures.Provider>
   );
@@ -62,7 +86,7 @@ export const ContextFeaturesProvider = ({ children }: ContextFeaturesProps) => {
 export const useContextFeatures = () => {
   const context = React.useContext(ContextFeatures);
   if (!context) {
-    throw new Error('useContextFeatures must be used within a BlogProvider');
+    throw new Error('useContextFeatures must be used within a ContextFeaturesProvider');
   }
   return context;
 };
