@@ -6,6 +6,7 @@ import { useContextFeatures } from '@/context/ContextFeatures';
 import { ButtonBack, ContainerWrapper, HeaderBack } from './styles';
 import Image from 'next/image';
 import Link from "next/link";
+import PostBar from "@/components/PostBar/PostBar";
 
 const PostPage = () => {
   const { id } = useParams(); 
@@ -82,23 +83,9 @@ const PostPage = () => {
 
           <div className="description">
             <span dangerouslySetInnerHTML={{ __html:post.excerpt?.rendered ?? ""}}/>
-            <div>
-              <h3>{post.title?.rendered}</h3>
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-            </div>
-            <div>
-              <h3>{post.title?.rendered}</h3>
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-            </div>
-            <div>
-              <h3>{post.title?.rendered}</h3>
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-            </div>
-            <div>
-              <h3>{post.title?.rendered}</h3>
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-            </div>
+            <PostBar />
+            <PostBar />
+            <PostBar />
             <div className="image">
               {featuresMedia.get(post.id)?.source_url && (
                 <Image
@@ -109,15 +96,8 @@ const PostPage = () => {
                 />
               )}
             </div>
-            <div>
-              <h3>{post.title?.rendered}</h3>
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-            </div>
-            <div>
-              <h3>{post.title?.rendered}</h3>
-              <span className="question" dangerouslySetInnerHTML={{ __html: post.excerpt?.rendered ?? "" }} />
-            </div>
+            <PostBar />
+            <PostBar />
           </div>
         </div>
       </ContainerWrapper>

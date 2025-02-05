@@ -1,7 +1,5 @@
-// utils/validateCNPJ.ts
-
 export const validateCNPJ = (cnpj: string): boolean => {
-  const cleanCNPJ = cnpj.replace(/[^\d\.\/\-]+/g, ''); 
+  const cleanCNPJ = cnpj.replace(/\D/g, ''); 
 
   if (cleanCNPJ.length !== 14) return false;
 

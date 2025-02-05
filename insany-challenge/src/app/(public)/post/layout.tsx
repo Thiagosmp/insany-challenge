@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { Providers } from "../../../providers";
 import Header from "@/components/Header/Header";
+import { Providers } from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "SmartMoney",

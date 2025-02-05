@@ -12,13 +12,13 @@ import Image from 'next/image';
 import { validateCNPJ } from '@/utils/validateCNPJ';
 
 
-const schemaPessoa = z.object({
+const schemaPerson = z.object({
   name: z.string().min(3, 'Nome deve ter pelo menos 3 caracteres'),
   email: z.string().email('E-mail inválido'),
   phone: z.string().min(10, 'Número de celular inválido'),
 });
 
-const schemaEmpresa = z.object({
+const schemaEnterprise = z.object({
   cnpj: z
     .string()
     .refine((value) => validateCNPJ(value), 'CNPJ inválido'),
@@ -26,25 +26,25 @@ const schemaEmpresa = z.object({
   phone: z.string().min(10, 'Número de celular inválido'),
 });
 
-type PessoaFormData = z.infer<typeof schemaPessoa>;
-type EmpresaFormData = z.infer<typeof schemaEmpresa>;
+type PersonFormData = z.infer<typeof schemaPerson>;
+type EnterpriseFormData = z.infer<typeof schemaEnterprise>;
 
-type FormTypes = 'pessoa' | 'empresa';
+type FormTypes = 'person' | 'enterprise';
 
 type FormDataMap = {
-  pessoa: PessoaFormData;
-  empresa: EmpresaFormData;
+  person: PersonFormData;
+  enterprise: EnterpriseFormData;
 };
 
 const FormRegister = () => {
-  const [selectedValue, setSelectedValue] = useState<FormTypes>('pessoa');
+  const [selectedValue, setSelectedValue] = useState<FormTypes>('person');
   const {
     register,
     handleSubmit,
     formState: { errors },
     clearErrors, 
   } = useForm<FormDataMap[typeof selectedValue]>( {
-    resolver: zodResolver(selectedValue === 'pessoa' ? schemaPessoa : schemaEmpresa),
+    resolver: zodResolver(selectedValue === 'person' ? schemaPerson : schemaEnterprise),
   });
 
   const onSubmit: SubmitHandler<FormDataMap[typeof selectedValue]> = (data) => {
@@ -66,9 +66,9 @@ const FormRegister = () => {
             <input
               type='radio'
               name='options'
-              value='pessoa'
-              checked={selectedValue === 'pessoa'}
-              onChange={() => handleRadioChange('pessoa')}
+              value='person'
+              checked={selectedValue === 'person'}
+              onChange={() => handleRadioChange('person')}
             />
             <span>Para você</span>
           </label>
@@ -77,16 +77,16 @@ const FormRegister = () => {
             <input
               type='radio'
               name='options'
-              value='empresa'
-              checked={selectedValue === 'empresa'}
-              onChange={() => handleRadioChange('empresa')}
+              value='enterprise'
+              checked={selectedValue === 'enterprise'}
+              onChange={() => handleRadioChange('enterprise')}
             />
             <span>Para empresa</span>
           </label>
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)}>
-          {selectedValue === 'pessoa' ? (
+          {selectedValue === 'person' ? (
             <>
               <Input type='text' placeholder='Nome' {...register('name')} />
               {errors.name && <p>{errors.name.message?.toString()}</p>}
@@ -118,7 +118,7 @@ const FormRegister = () => {
         </span>
 
         <div className='security'>
-          <Image src='/icons/icon-security.svg' alt='Segurança' width={21.5} height={24} />
+          <Image src='/icons/icon-security.svg' alt='icon segurança' width={21.5} height={24} />
           <p>Seus dados estão seguros</p>
         </div>
       </SectionForm>
