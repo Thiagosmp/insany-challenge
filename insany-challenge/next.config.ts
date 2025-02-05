@@ -4,7 +4,16 @@ const nextConfig: NextConfig = {
   /* config options here */
   reactStrictMode: true,
   images: {
-    domains: ['devblog.insanydesign.com','secure.gravatar.com'],
+    remotePatterns: [
+      {
+        protocol:"https",
+        hostname: 'devblog.insanydesign.com',  
+      },
+      {
+        protocol: "https",
+        hostname: 'secure.gravatar.com',
+      }
+    ],
   },
 
   compiler: {
