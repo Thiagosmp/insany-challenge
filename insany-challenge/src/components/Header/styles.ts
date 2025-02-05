@@ -72,6 +72,11 @@ export const NavLinks = styled.div< { $isSticky: boolean } >`
   @media (max-width: 768px) {
     display: none;
   }
+
+  @media (min-width : 770px) and (max-width : 900px) {
+    gap: 1rem;
+  }
+
 `;
 
 export const Hamburger = styled.div`

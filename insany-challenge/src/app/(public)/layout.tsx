@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { archivoSans } from "../../styles/fonts";
+import { archivo } from "../../styles/fonts";
 import { Providers } from "../providers"; 
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body className={archivoSans.variable}>
+      <body className={archivo.variable}>
         <Providers>
           {children}
         </Providers>

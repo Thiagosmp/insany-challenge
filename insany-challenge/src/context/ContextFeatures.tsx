@@ -86,7 +86,7 @@ export const ContextFeaturesProvider = ({ children }: ContextFeaturesProps) => {
 export const useContextFeatures = () => {
   const context = React.useContext(ContextFeatures);
   if (!context) {
-    throw new Error('useContextFeatures must be used within a ContextFeaturesProvider');
+    throw new Error('useContextFeatures deve ser usado dentro de um ContextFeaturesProvider');
   }
   return context;
 };
