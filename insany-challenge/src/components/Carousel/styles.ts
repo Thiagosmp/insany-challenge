@@ -21,6 +21,11 @@ export const CarouselContainer = styled.div`
       border: none;
       background-color: transparent;
       cursor: pointer;
+      display: none;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
     }
 
     .rightButton {
@@ -30,6 +35,11 @@ export const CarouselContainer = styled.div`
       border: none;
       background-color: transparent;
       cursor: pointer;
+      display: none;
+
+      @media (min-width: 768px) {
+        display: flex;
+      }
     }
   }
 `;
@@ -122,7 +132,11 @@ export const DotsContainer = styled.div`
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 90px;
+  margin-top: 50px;
+
+  @media (min-width: 768px) {
+    margin-top: 90px;
+  }
 `;
 
 export const Dot = styled.div<IDotProps>`

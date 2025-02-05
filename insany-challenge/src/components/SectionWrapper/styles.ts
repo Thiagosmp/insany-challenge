@@ -332,22 +332,43 @@ export const ContentNotices = styled.section`
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 850px;
-  margin-bottom: 120px;
+  margin-bottom:64px;
 
   .title {
-    font-size: 1rem;
-    font-weight: 600;
-    color: ${(props) => props.theme.colors.primary};
+    span {
+      display: none;
+    }
 
     h2{
-      font-size: 2.5rem;
-      margin-top: 13px;
+      font-size: 1.5rem;
+      margin-top: 41px;
       font-weight: 600;
       color: ${(props) => props.theme.colors.neutralDark700};
       line-height: 1.25;
-      width: 400px;
+      text-align: center;
     }
+
+    @media ( width > 760px ){
+      
+      span {
+        display: block;
+        font-size: 1rem;
+        font-weight: 600;
+        color: ${(props) => props.theme.colors.primary};
+      }
+      
+      h2 {
+        font-size: 2.5rem;
+        width: 400px;
+        text-align: start;
+        margin-top: 13px;
+      }
+    }
+  }
+
+  @media ( width > 1280px ){
+    margin-bottom: 120px;
+    height: 850px;
   }
 `;
 
