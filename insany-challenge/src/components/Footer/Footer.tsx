@@ -99,7 +99,7 @@ const Footer = () => {
         <div>
           <Image src="/icons/internet.svg" alt="globo" width={18} height={18} />
           <span>Português</span>
-          <Image src="/icons/arrow-blue-down.svg" alt="globo" width={12} height={12} />
+          <Image src="/icons/icon-arrow-blue-down.svg" alt="globo" width={12} height={12} />
         </div>
         <span className='LinkInsanyDesign'>
           Desenvolvido por <span><Link href="https://www.insany.design/pt-BR" target='blank'>

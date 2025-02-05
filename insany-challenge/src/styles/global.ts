@@ -6,6 +6,10 @@ export const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     --font-archivo: 'Archivo', sans-serif;
+
+    a {
+      text-decoration: none;
+    }
   }
 
   body {

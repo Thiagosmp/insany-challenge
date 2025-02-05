@@ -69,14 +69,13 @@ export const NavLinks = styled.div< { $isSticky: boolean } >`
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 802px) {
     display: none;
   }
 
-  @media (min-width : 770px) and (max-width : 900px) {
-    gap: 1rem;
+  @media (min-width : 770px) and (max-width : 1080px) {
+    gap: 0.875rem;
   }
-
 `;
 
 export const Hamburger = styled.div`
@@ -93,7 +92,7 @@ export const Hamburger = styled.div`
     border-radius: 2px;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 802px) {
     display: flex;
   }
 `;

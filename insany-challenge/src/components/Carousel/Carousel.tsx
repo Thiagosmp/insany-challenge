@@ -71,10 +71,10 @@ const Carousel = ({ posts, authors, featuresMedia }: PostsCarousel) => {
     <CarouselContainer>
       <div className="alignButtons">
         <button className="leftButton" onClick={slideLeft}>
-          <Image src="/icons/arrow-left.svg" alt="arrow left" width={20} height={20} />
+          <Image src="/icons/icon-arrow-left.svg" alt="arrow left" width={20} height={20} />
         </button>
         <button className="rightButton" onClick={slideRight}>
-          <Image src="/icons/arrow-left.svg" alt="arrow left" width={20} height={20} />
+          <Image src="/icons/icon-arrow-left.svg" alt="arrow left" width={20} height={20} />
         </button>
       </div>
 
